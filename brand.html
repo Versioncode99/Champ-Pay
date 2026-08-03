@@ -11,6 +11,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 <style>
+  /* Internal reference sheet, kept on the night palette. The main stylesheet is
+     now light, so the tokens it no longer defines are restated here. */
+  :root {
+    --pitch-void:#05100C; --pitch-deep:#0A1A13; --pitch-mid:#0F2A1F;
+    --lattice:#22453A; --dim:#9FB8AE; --halide:#E9F5EF; --beam:#7FE3BE;
+    --f-display:"Archivo",sans-serif; --f-mono:"Martian Mono",monospace;
+  }
+  body { background:var(--pitch-void); color:var(--halide); }
+  .kicker { color:var(--dim); } .kicker::before { background:var(--beam); }
+  .t-lead, .t-body, .code { color:var(--dim); }
+  .brand__word { color:var(--halide); } .brand__word em { font-style:normal; color:var(--beam); }
   .sheet { padding-block: var(--s8); }
   .swatches { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--lattice); border:1px solid var(--lattice); }
   .sw { background:var(--pitch-deep); padding:var(--s5); }

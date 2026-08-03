@@ -13,6 +13,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/main.css">
 <style>
+  /* This review sheet stays on the night palette so marks are judged the way
+     they appear reversed. The main stylesheet is now light, so the tokens it
+     no longer defines are restated here. */
+  :root {
+    --pitch-void:#05100C; --pitch-deep:#0A1A13; --pitch-mid:#0F2A1F;
+    --lattice:#22453A; --dim:#9FB8AE; --halide:#E9F5EF; --beam:#7FE3BE;
+  }
+  body { background:var(--pitch-void); color:var(--halide); }
+  .kicker { color:var(--dim); }
+  .kicker::before { background:var(--beam); }
+  .t-h2, .t-lead, .t-body { color:inherit; }
+  .t-lead, .t-body { color:var(--dim); }
+  .code { color:var(--dim); }
   .opts { display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:1px; background:var(--lattice); border:1px solid var(--lattice); margin-top:var(--s8); align-items:start; }
   .opt { background:var(--pitch-deep); padding:var(--s6); }
   .spacer { display:none; }
