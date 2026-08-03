@@ -3,7 +3,10 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { join, extname, normalize } from 'node:path';
 
-const ROOT = process.cwd();
+// Mirrors the deployed layout: public/ is the web root. Dev-only pages that
+// live outside it (the QA harnesses) are still reachable via the fallback.
+const ROOT = join(process.cwd(), 'public');
+const FALLBACK = process.cwd();
 const PORT = 4173;
 
 const TYPES = {
@@ -27,8 +30,14 @@ createServer(async (req, res) => {
     if (path.endsWith('/')) path += 'index.html';
     if (!extname(path)) path += '.html';
 
-    const file = join(ROOT, normalize(path).replace(/^(\.\.[/\\])+/, ''));
-    await stat(file);
+    const safe = normalize(path).replace(/^(\.\.[/\\])+/, '');
+    let file = join(ROOT, safe);
+    try {
+      await stat(file);
+    } catch {
+      file = join(FALLBACK, safe);
+      await stat(file);
+    }
     const body = await readFile(file);
     res.writeHead(200, { 'Content-Type': TYPES[extname(file)] || 'application/octet-stream' });
     res.end(body);

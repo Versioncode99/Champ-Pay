@@ -10,16 +10,23 @@ node server.mjs
 
 Then open <http://localhost:4173>.
 
-## Pages
+## Layout
+
+`public/` is the web root and the only thing deployed as static assets.
 
 | File | Purpose |
 |---|---|
-| `index.html` | Main site |
-| `contact.html` | Contact form |
-| `legal.html` | Legal notice, regulatory status, privacy |
-| `brand.html` | Brand system reference (internal, `noindex`) |
-| `logos.html` | Logo direction options for review (internal, `noindex`) |
-| `qa-responsive.html` | Responsive QA harness (internal, `noindex`) |
+| `public/index.html` | Main site |
+| `public/contact.html` | Contact form |
+| `public/legal.html` | Legal notice, regulatory status, privacy |
+| `public/brand.html` | Brand system reference (internal, `noindex`) |
+| `public/logos.html` | Logo direction options for review (internal, `noindex`) |
+| `worker.js` | Worker entry: routes `/api/contact`, serves everything else from `public/` |
+| `wrangler.jsonc` | Deployment config (assets binding, compatibility date) |
+| `functions/api/contact.js` | Contact handler, imported by `worker.js` |
+| `qa-responsive.html` | Responsive QA harness — dev only, not deployed |
+
+`functions/` is a Cloudflare **Pages** convention. This project deploys as a **Worker**, which does not read that directory automatically, so `worker.js` wires the handler up explicitly. Moving or renaming either file breaks the contact form.
 
 `PRODUCT.md` holds the product record; `DESIGN.md` holds the design direction contract and tokens. Read both before changing anything.
 
