@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="ChampPay">
+  <title>ChampPay</title>
+  <!-- Floodlight head. The lit lamp cells describe a C. -->
+  <g fill="none" stroke="currentColor" stroke-width="2.4">
+    <!-- tapered housing -->
+    <path d="M6 8 H94 L88 78 H12 Z" opacity=".55"/>
+    <!-- mast + struts -->
+    <path d="M50 78 V96" opacity=".55"/>
+    <path d="M50 92 L38 96 M50 92 L62 96" opacity=".35"/>
+  </g>
+  <!-- dormant cells -->
+  <g fill="none" stroke="currentColor" stroke-width="1.8" opacity=".28">
+    <circle cx="23" cy="21" r="6.2"/>
+    <circle cx="41" cy="37" r="6.2"/><circle cx="59" cy="37" r="6.2"/><circle cx="77" cy="37" r="6.2"/>
+    <circle cx="41" cy="53" r="6.2"/><circle cx="59" cy="53" r="6.2"/><circle cx="77" cy="53" r="6.2"/>
+    <circle cx="23" cy="69" r="6.2"/>
+  </g>
+  <!-- lit cells: the C -->
+  <g fill="currentColor">
+    <circle cx="41" cy="21" r="6.2"/><circle cx="59" cy="21" r="6.2"/><circle cx="77" cy="21" r="6.2"/>
+    <circle cx="23" cy="37" r="6.2"/>
+    <circle cx="23" cy="53" r="6.2"/>
+    <circle cx="41" cy="69" r="6.2"/><circle cx="59" cy="69" r="6.2"/><circle cx="77" cy="69" r="6.2"/>
+  </g>
+</svg>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — ChampPay</title>
+<meta name="description" content="Start a conversation with ChampPay. For gaming operators, banks and sponsor partners, investors, and introducers.">
+<meta name="theme-color" content="#05100C">
+<script>document.documentElement.className+=' js';</script>
+<link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead" id="masthead">
+  <div class="wrap masthead__in">
+    <a class="brand" href="index.html" aria-label="ChampPay home">
+      <svg class="brand__mark" viewBox="0 0 100 100" fill="currentColor" style="color:var(--beam)" aria-hidden="true">
+        <circle cx="43" cy="18" r="8.6"/><circle cx="66" cy="18" r="8.6"/><circle cx="89" cy="18" r="8.6"/>
+        <circle cx="20" cy="39" r="8.6"/><circle cx="20" cy="61" r="8.6"/>
+        <circle cx="43" cy="82" r="8.6"/><circle cx="66" cy="82" r="8.6"/><circle cx="89" cy="82" r="8.6"/>
+      </svg>
+      <span class="brand__word">CHAMP<em>PAY</em></span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+
+    <nav class="nav" id="nav">
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#corridors">Corridors</a>
+      <a href="index.html#audiences">Who we work with</a>
+      <a href="index.html#position">Our position</a>
+      <a class="btn btn--primary" href="contact.html" aria-current="page">Start a conversation</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="sec" style="padding-top:172px">
+    <div class="wrap">
+      <div class="contact__grid">
+
+        <div>
+          <p class="kicker">Contact</p>
+          <h1 class="t-h2" style="margin-top:var(--s5);max-width:16ch">Start a conversation</h1>
+          <p class="t-lead" style="margin-top:var(--s5)">Tell us which side of the table you are on and what you are trying to solve. You will get a reply from someone who can actually answer, not a sales sequence.</p>
+
+          <hr class="rule" style="margin-block:var(--s8)">
+
+          <p class="code">What to expect</p>
+          <ul class="ledger__list" style="margin-top:var(--s4)">
+            <li>A direct reply, usually within two business days.</li>
+            <li>An honest answer about what we can and cannot do today — the same picture set out on our <a href="index.html#position" style="color:var(--beam)">position page</a>.</li>
+            <li>No mailing list, no drip sequence, no reselling your details.</li>
+          </ul>
+
+          <p class="t-body" style="margin-top:var(--s7);font-size:.875rem">If you are a bank or sponsor partner conducting diligence and need documentation ahead of a call, say so in your message and we will send what we have.</p>
+        </div>
+
+        <div>
+          <form class="form" id="contactForm" novalidate>
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+              <p class="field__err" data-err-for="name" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="email">Work email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+              <p class="field__err" data-err-for="email" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" autocomplete="organization" required>
+              <p class="field__err" data-err-for="company" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="capacity">You are</label>
+              <select id="capacity" name="capacity" required>
+                <option value="">Select one</option>
+                <option>A gaming or betting operator</option>
+                <option>A bank or sponsor partner</option>
+                <option>An investor</option>
+                <option>An introducer or partner</option>
+                <option>Something else</option>
+              </select>
+              <p class="field__err" data-err-for="capacity" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="message">What are you trying to solve?</label>
+              <textarea id="message" name="message" required></textarea>
+              <p class="field__err" data-err-for="message" aria-live="polite"></p>
+            </div>
+
+            <!-- Honeypot: hidden from people, tempting to bots -->
+            <div style="position:absolute;left:-9999px" aria-hidden="true">
+              <label for="website">Do not fill this in</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form__status" id="formStatus" role="status" aria-live="polite"></div>
+
+            <button class="btn btn--primary" type="submit" id="submitBtn" style="justify-content:center">
+              <span id="submitLabel">Send message</span>
+              <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+            </button>
+
+            <p class="t-body" style="font-size:.8125rem">By sending this you agree we may store and use your details to respond. Nothing more. See <a href="legal.html" style="color:var(--beam)">legal &amp; privacy</a>.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__bottom" style="border-top:0;padding-top:0">
+      <p class="foot__legal">© <span id="yr">2026</span> Champ Pay Nigeria Limited. ChampPay is not a licensed payment institution, acquirer or gaming payment processor in any jurisdiction, and does not hold card-scheme acquiring registration. Nothing on this site is an offer of regulated payment services.</p>
+      <p class="code"><a href="index.html" style="text-decoration:none">← Back to site</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/form.js" defer></script>
+</body>
+</html>
