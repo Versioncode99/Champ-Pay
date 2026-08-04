@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /logos
+Disallow: /brand
+
+Sitemap: https://champ-pay.com/sitemap.xml

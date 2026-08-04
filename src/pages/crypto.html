@@ -1,0 +1,139 @@
+<!--meta {
+  "out": "crypto.html",
+  "title": "Digital assets — ChampPay",
+  "description": "Institutional-grade digital-asset liquidity for exchanges, fintechs and treasury desks, with live market reference data.",
+  "darkhero": true,
+  "priority": 0.8,
+  "scripts": ["/assets/js/market.js"]
+} -->
+
+  <section class="phead">
+    <div class="wrap">
+      <p class="code crumb"><a href="/">Home</a> <i aria-hidden="true">/</i> <span>What we do</span></p>
+      <p class="kicker mt5">Digital assets</p>
+      <h1 class="phead__title">Institutional liquidity, priced like it.</h1>
+      <p class="phead__lead">Exchanges, fintechs and treasury desks across the region move institutional size and are still quoted retail. That gap is the business — and it is deliberately the least public thing we do.</p>
+      <div class="phead__actions">
+        <a class="btn btn--primary" href="/contact">Enquire under NDA<svg class="btn__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <!-- Default content reads correctly whether or not the script runs: with
+         JavaScript it is replaced by live rows, without it, it stays true. -->
+    <div class="ticker__track" id="tickerTrack">
+      <div class="tick"><span class="tick__sym">Live reference prices load in your browser</span></div>
+    </div>
+  </div>
+
+  <!-- --------------------------------------------------------- What we do -->
+  <section class="sec band">
+    <div class="wrap">
+      <div class="sec__head--split">
+        <div data-reveal>
+          <p class="kicker">The line</p>
+          <h2 class="t-h2 mt5">Wholesale, not retail.</h2>
+        </div>
+        <p class="t-lead" data-reveal data-delay="1">We source digital-asset liquidity at institutional tiers and make it available to counterparties who need size, consistency and a settlement path they can reconcile — rather than a retail order book and a screenshot.</p>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card" data-reveal>
+          <p class="card__title">Who it serves</p>
+          <p class="card__body">Licensed exchanges, payment companies and treasury desks in African markets who are moving genuine volume and being priced as though they are not.</p>
+        </div>
+        <div class="card" data-reveal data-delay="1">
+          <p class="card__title">What it provides</p>
+          <p class="card__body">Consistent institutional pricing, defined settlement windows, and a counterparty relationship with terms written down rather than agreed in a chat window.</p>
+        </div>
+        <div class="card" data-reveal data-delay="2">
+          <p class="card__title">How it is governed</p>
+          <p class="card__body">KYC on both sides, source-of-funds checks, and written agreements before anything moves. There is no version of this business that works without that.</p>
+        </div>
+      </div>
+
+      <p class="note mt8" data-reveal><strong>On detail:</strong> commercial terms, routing, counterparties and the structure behind this line are shared under NDA with qualifying counterparties, not published on a website. If you are an exchange, fintech or desk with real volume, the conversation starts at <a href="/contact" style="color:var(--accent)">contact</a>.</p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- Live market -->
+  <section class="sec band--night on-night" id="market">
+    <div class="wrap">
+      <div class="sec__head--split">
+        <div data-reveal>
+          <p class="kicker">Reference market</p>
+          <h2 class="t-h2 mt5">Live reference prices</h2>
+        </div>
+        <p class="t-lead" data-reveal data-delay="1">Public market data, refreshed in your browser. It is context for the market we operate in — it is not a ChampPay quote, an executable price, or an offer to trade.</p>
+      </div>
+
+      <div class="tablewrap" data-reveal>
+        <table class="mkt" id="mktTable">
+          <caption class="code" style="text-align:left;padding-bottom:var(--s4)">Spot reference · updates automatically</caption>
+          <thead>
+            <tr>
+              <th scope="col">Asset</th>
+              <th scope="col">Price (USD)</th>
+              <th scope="col">24h</th>
+              <th scope="col">7d</th>
+              <th scope="col">Market cap</th>
+            </tr>
+          </thead>
+          <tbody id="mktBody">
+            <tr><td colspan="5" style="text-align:left;color:var(--halide-soft)">Live reference prices load in your browser. If they do not appear, JavaScript is disabled or the data source is temporarily unavailable.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="code mt5" id="mktStamp" data-reveal>Source: CoinGecko public API</p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------- Roadmap -->
+  <section class="sec band">
+    <div class="wrap">
+      <div class="shead" data-reveal>
+        <p class="kicker">Direction</p>
+        <h2 class="t-h2 mt5">Where this line is going.</h2>
+        <p class="t-lead mt5">Stated at the level of direction rather than detail. The specifics live in the data room, not on the internet.</p>
+      </div>
+
+      <div class="flow mt8" data-reveal>
+        <div class="flow__step">
+          <p class="flow__n">NOW</p>
+          <p class="flow__t">Serve through partners</p>
+          <p class="flow__b">Operating with established counterparties who hold the permissions, while the relationships and flow are proven.</p>
+        </div>
+        <div class="flow__step">
+          <p class="flow__n">NEXT</p>
+          <p class="flow__t">Direct capability</p>
+          <p class="flow__b">Bringing sourcing and settlement in-house as the appropriate authorisations are obtained.</p>
+        </div>
+        <div class="flow__step">
+          <p class="flow__n">THEN</p>
+          <p class="flow__t">More markets</p>
+          <p class="flow__b">Extending beyond Nigeria into the regional corridors where the same pricing gap exists.</p>
+        </div>
+        <div class="flow__step">
+          <p class="flow__n">LATER</p>
+          <p class="flow__t">Data &amp; routing</p>
+          <p class="flow__b">The intelligence layer — routing and market data — that a flow business earns the right to build.</p>
+        </div>
+      </div>
+
+      <div class="mt8" data-reveal>
+        <details class="faq"><summary>Do you publish spreads or rates?</summary><p>No. Pricing is quoted to a counterparty against their size and settlement requirements, under agreement. Published numbers on a marketing page would be misleading for both of us.</p></details>
+        <details class="faq"><summary>Do you serve retail?</summary><p>No. This line is business to business only.</p></details>
+        <details class="faq"><summary>What is required before onboarding?</summary><p>KYC on both sides, source-of-funds evidence, and a written agreement. We do not begin with a transfer and paperwork afterwards.</p></details>
+        <details class="faq"><summary>Is the price table on this page tradable?</summary><p>No. It is third-party public reference data displayed for market context and nothing else.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap cta__in">
+      <p class="cta__title">Moving institutional size and being quoted retail?</p>
+      <a class="btn btn--primary" href="/contact">Start a conversation<svg class="btn__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </section>

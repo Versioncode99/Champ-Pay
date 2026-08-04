@@ -1,0 +1,105 @@
+<!--meta {
+  "out": "contact.html",
+  "title": "Contact — ChampPay",
+  "description": "Start a conversation with ChampPay. For merchants, banks and sponsor partners, investors, introducers, partners, press and candidates.",
+  "darkhero": true,
+  "priority": 0.9,
+  "scripts": ["/assets/js/form.js"]
+} -->
+
+  <section class="phead">
+    <div class="wrap">
+      <p class="code crumb"><a href="/">Home</a> <i aria-hidden="true">/</i> <span>Company</span></p>
+      <p class="kicker mt5">Contact</p>
+      <h1 class="phead__title">Start a conversation.</h1>
+      <p class="phead__lead">Tell us which side of the table you are on and what you are trying to solve. You will get a reply from someone who can actually answer, not a sales sequence.</p>
+    </div>
+  </section>
+
+  <section class="sec band">
+    <div class="wrap">
+      <div class="split">
+
+        <div data-reveal>
+          <p class="code">What to expect</p>
+          <ul class="ledger__list mt4">
+            <li>A direct reply, usually within two business days.</li>
+            <li>An honest answer about what we can and cannot do today.</li>
+            <li>No mailing list, no drip sequence, no reselling your details.</li>
+          </ul>
+
+          <hr class="rule" style="margin-block:var(--s7)">
+
+          <p class="code">Who to expect a reply from</p>
+          <div class="mt4">
+            <div class="fact"><p class="fact__k">Merchants</p><p class="fact__v">Someone from the merchant team, with a straight answer on pilot timing.</p></div>
+            <div class="fact"><p class="fact__k">Banks &amp; sponsors</p><p class="fact__v">Say so and the diligence pack comes with the reply rather than after it.</p></div>
+            <div class="fact"><p class="fact__k">Investors</p><p class="fact__v">Materials under NDA where appropriate, and access to the people building it.</p></div>
+            <div class="fact"><p class="fact__k">Introducers</p><p class="fact__v">The current form of our introducer terms, for your review before anything is signed.</p></div>
+            <div class="fact"><p class="fact__k">Press</p><p class="fact__v">Mention your deadline in the message and it goes to the front of the queue.</p></div>
+            <div class="fact"><p class="fact__k">Candidates</p><p class="fact__v">A yes or a no with a reason. See <a href="/careers" style="color:var(--accent)">careers</a>.</p></div>
+          </div>
+        </div>
+
+        <div data-reveal data-delay="1">
+          <form class="form" id="contactForm" novalidate>
+            <div class="field">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
+              <p class="field__err" data-err-for="name" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="email">Work email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+              <p class="field__err" data-err-for="email" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" autocomplete="organization" required>
+              <p class="field__err" data-err-for="company" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="capacity">You are</label>
+              <select id="capacity" name="capacity" required>
+                <option value="">Select one</option>
+                <option>A merchant or operator</option>
+                <option>A bank or sponsor partner</option>
+                <option>An investor</option>
+                <option>An introducer</option>
+                <option>A prospective partner</option>
+                <option>Press or media</option>
+                <option>A candidate</option>
+                <option>Something else</option>
+              </select>
+              <p class="field__err" data-err-for="capacity" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="message">What are you trying to solve?</label>
+              <textarea id="message" name="message" required></textarea>
+              <p class="field__err" data-err-for="message" aria-live="polite"></p>
+            </div>
+
+            <!-- Honeypot: hidden from people, tempting to bots -->
+            <div style="position:absolute;left:-9999px" aria-hidden="true">
+              <label for="website">Do not fill this in</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form__status" id="formStatus" role="status" aria-live="polite"></div>
+
+            <button class="btn btn--primary" type="submit" id="submitBtn" style="justify-content:center">
+              <span id="submitLabel">Send message</span>
+              <svg class="btn__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+            </button>
+
+            <p class="t-body" style="font-size:.8125rem">By sending this you agree we may store and use your details to respond. Nothing more. See <a href="/legal" style="color:var(--accent)">legal &amp; privacy</a>.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>

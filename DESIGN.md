@@ -2,69 +2,155 @@
 
 <!-- impeccable:design-schema 1 -->
 
-## Direction contract — THE FLOODLIGHT ARRAY
+**Current: v3 — "Day and Night", multi-page (2026-08-04).**
+v1 was "The Floodlight Array" (an all-dark page with a drawn CSS lamp grid);
+v2 kept its idea but carried it with real photography instead of drawn
+furniture; v3 extends v2 across fifteen pages. The tokens, type and two grounds
+below are v2's and are unchanged — v3 adds page architecture, not a new look.
 
-**THESIS.** Payments infrastructure is the floodlight, not the match: nobody in the stadium ever looks at it, and without it there is no game after dark. ChampPay lights markets that others leave unlit. This surface refuses the category default — the floating dashboard screenshot on near-black with a neon gradient orb — and refuses its opposite, the cream/serif/terracotta editorial page.
+## Direction contract — DAY AND NIGHT
 
-**OWN-WORLD.** The lamp array. A saturated floodlit-pitch green ground (never neutral black), ruled by a visible hairline lattice into discrete cells. Two lamp temperatures carry all accent: cool metal-halide mint for *lit*, warm sodium amber for *live*. Type is engineered, not editorial — Archivo Expanded for structural display, Archivo for text, Martian Mono for codes and figures. Panels are frames in a truss, not cards with shadows.
+**THESIS.** Payments infrastructure is the floodlight, not the match: nobody in
+the stadium ever looks at it, and without it there is no game after dark. The
+page is a **light institutional document punctuated by full-bleed African night
+photography**. It refuses the category default — the floating dashboard
+screenshot on near-black with a neon gradient orb — and refuses its opposite,
+the cream/serif/terracotta editorial page.
 
-**STORY.** A gaming operator, bank, investor or introducer arrives, understands within one viewport that this is African payment infrastructure built for the gaming vertical, sees a company that speaks precisely about what it is building rather than overclaiming, and makes contact.
+**OWN-WORLD.** Two grounds, alternating. *Day* is paper with a deep-green
+accent, ruled with hairlines, set in engineered type. *Night* is the pitch
+palette with a metal-halide mint accent, carrying photography and the product.
+Panels are frames in a truss, not cards with shadows.
 
-**FIRST VIEWPORT.** Full-bleed pitch field. Wordmark top-left, mono nav and one primary action top-right. Left two-thirds: mono eyebrow with a lit-cell marker, then a three-line Archivo Expanded headline at display scale, one line of body, primary action. Right: the floodlight array — a real cell grid that warms bank-by-bank on load and throws an elliptical pool of light across the lower field. A mono corridor ribbon (LOS · ABV · ACC · JNB · LDN) runs along the bottom edge like a scoreboard strip.
+**STORY.** A merchant, bank, investor, introducer or partner arrives, sees
+within one viewport that this is a serious multi-service payments company,
+finds the page written for *them* rather than a paragraph inside someone
+else's, and makes contact.
 
-**FORM.** Grounded direction 7 of 7 (floodlight arrays), assigned by seed key `3cf65498`, scope direction, mode persuade. Challengers weighed and rejected: collider event display lost on audience identification and lands in the near-black-plus-neon rut; paper automata, raku, character sheet, risograph and minihompy room all fail institutional credibility for a bank risk reader.
+**FIRST VIEWPORT (home).** Full-bleed floodlit night photograph — the
+Lekki-Ikoyi bridge. Reversed masthead. Headline bottom-left at display scale,
+one lead line, two actions, and a thin capability strip pinned to the base.
+
+**FIRST VIEWPORT (interior).** A compact night band — not a second full hero —
+carrying breadcrumb, kicker, title and lead. Interior pages get to the point
+inside one screen and leave the scale advantage to the home page.
 
 ## Colour
 
-Strategy: **Committed** — a saturated green field owns 40–60% of every surface. This is not "dark mode with an accent"; the ground is a hue.
+Strategy: **two grounds, one accent family.** Never "dark mode with an accent".
 
 | Token | Value | Role |
 |---|---|---|
-| `--pitch-void` | `#05100C` | Page ground, deepest |
-| `--pitch-deep` | `#0A1A13` | Section ground |
-| `--pitch-mid` | `#0F2A1F` | Raised panels, cells |
-| `--lattice` | `#22453A` | Hairline rules, cell borders, truss structure |
-| `--halide` | `#E4F7EF` | Primary text, full illumination |
-| `--beam` | `#7FE3BE` | Lit state, primary accent, active cells |
-| `--sodium` | `#FFB347` | Live/warm state, secondary accent — used sparingly |
-| `--dim` | `#7A9A8C` | Muted text, dormant cells |
+| `--paper` | `#fbfcfb` | Day ground |
+| `--paper-alt` | `#eff3f0` | Alternate day band |
+| `--ink` | `#08130f` | Day text |
+| `--ink-soft` | `#4c5f58` | Day secondary text |
+| `--rule` | `#d9e1dc` | Day hairlines |
+| `--accent` | `#0a6b49` | Day accent |
+| `--accent-hi` | `#08573b` | Day accent, pressed |
+| `--night` | `#05100c` | Night ground |
+| `--night-alt` | `#0a1a13` | Raised night panels |
+| `--halide` | `#e9f5ef` | Night text |
+| `--halide-soft` | `#9fb8ae` | Night secondary text |
+| `--beam` | `#7fe3be` | Night accent |
+| `--sodium` | `#ffb347` | Warm/live state — used sparingly |
+| `--rule-night` | `#22453a` | Night hairlines |
 
-Rules: `--sodium` never exceeds ~5% of a viewport. Never place `--beam` and `--sodium` adjacent at equal weight. No gradients except the single radial light-pool, which is a physical effect, not decoration. No glow/bloom filters — illumination is expressed through value and cell state, not blur.
+### Semantic tokens — the rule that matters
+
+Components read `--fg`, `--fg-soft`, `--bg`, `--line`, `--acc`, `--acc-hi` and
+`--acc-on`, never the raw palette. Any night ground remaps that set:
+`.on-night`, `.phead`, `.cta` and `.masthead.is-over` all do.
+
+> **This is load-bearing.** A night section that sets only `color` and forgets
+> the token remap renders day-mode secondary ink on near-black — around 2.8:1,
+> which looks fine in a screenshot and fails in fact. That bug shipped in v3's
+> first pass and was caught by the contrast sweep. Buttons in particular are
+> now entirely token-driven, so a new night section cannot reintroduce
+> deep-green-on-near-black.
+
+No gradients except photographic scrims. No glow or bloom filters.
 
 ## Type
 
-- **Display:** Archivo Expanded, 600/700. Structural, wide, engineered — the truss head. Tight tracking at large sizes.
-- **Text:** Archivo, 400/500.
-- **Technical:** Martian Mono, 400/500 — corridor codes, figures, eyebrows, labels, nav. Uppercase with wide tracking at small sizes.
+- **Display:** Archivo Expanded, 600/700 — structural, wide, engineered.
+- **Text:** Archivo 400/500.
+- **Technical:** Martian Mono 400/500 — codes, figures, kickers, labels. Upper
+  case with wide tracking at small sizes.
 
-Two families only. Deliberately avoids the training-default display faces (Fraunces, Playfair, Cormorant, Space Grotesk, Inter-as-display, DM, Outfit, Plus Jakarta, Instrument).
+Two families only. Deliberately avoids the training-default display faces
+(Fraunces, Playfair, Cormorant, Space Grotesk, Inter-as-display, DM, Outfit,
+Plus Jakarta, Instrument).
 
 ## Composition
 
-The lamp grid is the compositional law. Content aligns to a visible cell structure; hairline `--lattice` rules articulate it. Sections are *banks* of the array. Asymmetry is normal — the array is wider than the text column and content sits inside it off-centre.
+Spacing scale: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128. More space above
+a heading than below it. Density varies deliberately: a dense technical passage
+earns a quiet full-bleed one. Sections alternate day and night so a long page
+has rhythm rather than uniform scroll.
 
-Spacing scale: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128 / 192. More space above a heading than below it. Density varies deliberately: a dense technical passage earns a quiet full-bleed one.
+## The device — the one dimensional object
+
+A phone rendered in CSS 3D (`perspective` + `rotateX/Y/Z`, real transforms, no
+image), running a tap-to-pay screen with concentric rings pulsing from a lit
+core, and status chips floating beside it on the same perspective plane.
+
+It exists because the site described QR and SoftPOS while showing nothing, and
+because a company with no shipped app has no honest screenshot to use. It is
+**drawn**, and captioned as illustrative, precisely so it cannot be mistaken for
+a photograph of a shipping product.
 
 ## Motion
 
-Native motion of the world: **the switch-on.** Metal-halide lamps do not fade in — they come up in stages, bank by bank, with a warm-up. Motion is therefore *stepped and staggered*, never a smooth uniform fade.
+Native motion of the world: **the switch-on** — stepped and staggered, never a
+uniform smooth fade.
 
-- Section entry: cells illuminate in a staggered sequence, 40–60ms apart, ease-out, no bounce.
-- The hero array runs its warm-up once on load.
-- Corridor ribbon: continuous slow marquee, pauses on hover.
-- No parallax, no scroll-jacking, no counters spinning up (there are no real figures to count).
-- `prefers-reduced-motion`: every cell renders lit at rest, marquee static, all content immediately visible. The page must be complete and legible with zero animation.
+- Section entry: staggered reveal, 90ms apart, ease-out, no bounce.
+- Tap rings: three-stage ping on a 2.8s cycle.
+- Ticker: continuous slow marquee, pauses on hover.
+- No parallax, no scroll-jacking, no spinning counters.
+- `prefers-reduced-motion`: everything renders at rest, marquee static, rings
+  static, all content immediately visible.
+
+> **Reveal safety.** `[data-reveal]` starts at `opacity: 0` only when the `.js`
+> class is present, and `main.js` force-shows every remaining element 2.5s after
+> load. The live v2 site was found rendering 17 of 17 reveal elements at
+> `opacity: 0` in a headless capture — content that exists but cannot be seen is
+> worse than content that never animates.
 
 ## Components
 
-Frames, not cards: panels are defined by `--lattice` hairlines and cell geometry, never by drop shadows or glassmorphism. Buttons are rectangular with a 2px lit edge on the action side. Inputs are cells in the grid with a lattice underline that lights on focus. Nav is mono uppercase with a lit-cell marker on the active item.
+Frames, not cards: defined by hairlines and geometry, never drop shadows or
+glassmorphism. Buttons are rectangular, token-driven. Nav is a hover menu on
+pointer devices and an accordion drawer under 1000px. Inputs are cells with a
+hairline underline that lights on focus.
 
 ## Identity
 
-Mark: a floodlight head — a 4×4 grid of lamp cells inside a subtly tapered housing, where the lit cells describe a **C**. Reads as a solid geometric mark at favicon scale and resolves into the C at display scale. Fuses the championship motif with the floodlight world without any literal crown or trophy clipart.
+Mark: a floodlight head — lamp cells whose lit cells describe a **C**. Reads as
+a solid geometric mark at favicon scale.
 
-Wordmark: **CHAMPPAY** in Archivo Expanded 700, tight tracking, with `PAY` carrying the beam colour at reduced opacity — or set solid where contrast demands.
+Wordmark: **CHAMPPAY** in Archivo Expanded 700, tight tracking.
+
+**Not final.** Seven directions live at `/logos` (internal, `noindex`) awaiting
+a decision.
+
+## Imagery
+
+**Real photography only, and every image is checked for third-party marks
+before use.** Five sourced photographs were rejected and deleted during v2 for
+carrying NFL/Super Bowl, Mercedes-Benz, Paris Saint-Germain, Mastercard, Pepsi,
+LaLiga and Athletic Bilbao branding. Stadium and crowd photography is almost
+universally branded; African urban night and infrastructure is cleaner *and*
+more on-brief. Repeat the contact-sheet check (`qa-images.html` pattern) for any
+new image.
+
+The social share card is generated from the brand system itself
+(`og-card.html` → `public/assets/img/og-default.png`), not sourced.
 
 ## Content law
 
-Per PRODUCT.md: no customers, no logos, no volumes, no certifications, no testimonials, no statistics. Not one number on this site describes ChampPay's own performance, because none exists yet. Trust is carried entirely by precision of language and quality of execution. Any figure that appears describes the *market*, is sourced, and is labelled as such.
+Per `PRODUCT.md`: no customers, logos, volumes, certifications, testimonials or
+performance statistics — none exist. Any figure that appears describes the
+*market*, is attributed to its publisher, and is labelled as such. Trust is
+carried entirely by precision of language and quality of execution.

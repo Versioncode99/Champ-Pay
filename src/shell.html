@@ -1,0 +1,79 @@
+<!doctype html>
+<!--
+  ChampPay — generated file. Do not edit public/*.html directly.
+  Author pages in src/pages/, then run: node build.mjs
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta name="theme-color" content="#05100C">
+{{robots}}
+<link rel="canonical" href="{{url}}">
+<script>document.documentElement.className+=' js';</script>
+<link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="ChampPay">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{url}}">
+<meta property="og:image" content="{{ogimage}}">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
+{{head}}
+{{schema}}
+</head>
+<body class="{{bodyclass}}">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead{{mastheadclass}}" id="masthead">
+  <div class="wrap masthead__in">
+    <a class="brand" href="/" aria-label="ChampPay home">
+      {{mark}}
+      <span class="brand__word">CHAMPPAY</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+
+    <nav class="nav" id="nav" aria-label="Main">
+        {{nav}}
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+{{body}}
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a class="brand" href="/" aria-label="ChampPay home">
+          {{mark}}
+          <span class="brand__word">CHAMPPAY</span>
+        </a>
+        <p class="t-body foot__blurb">A multi-service, multi-currency payments company building acceptance, settlement and treasury infrastructure for African businesses.</p>
+        <p class="code foot__slogan">Pay Like a Champ</p>
+      </div>
+
+      {{footernav}}
+    </div>
+
+    <div class="foot__bottom">
+      <p class="foot__legal">© <span id="yr">2026</span> Champ Pay Nigeria Limited. All rights reserved. · <a href="/legal">Legal &amp; privacy</a></p>
+      <p class="code">Built in Lagos</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+{{scripts}}
+</body>
+</html>

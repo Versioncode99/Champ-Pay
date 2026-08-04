@@ -33,6 +33,8 @@
   --bg: var(--paper);
   --line: var(--rule);
   --acc: var(--accent);
+  --acc-hi: var(--accent-hi);
+  --acc-on: #fff;          /* text sitting on top of a filled accent */
 
   /* Type */
   --f-display: "Archivo", "Arial Black", sans-serif;
@@ -50,14 +52,16 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.on-night {
+.on-night, .masthead.is-over {
   --fg: var(--halide);
   --fg-soft: var(--halide-soft);
   --bg: var(--night);
   --line: var(--rule-night);
   --acc: var(--beam);
-  color: var(--fg);
+  --acc-hi: var(--halide);
+  --acc-on: var(--night);
 }
+.on-night { color: var(--fg); }
 
 /* --------------------------------------------------------------------------
    2. Base
@@ -164,13 +168,43 @@ hr.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
 .masthead.is-over .brand__mark { color: var(--beam); }
 .brand__word { font-family: var(--f-display); font-variation-settings: "wdth" 112, "wght" 700; font-size: 1.0625rem; letter-spacing: -0.03em; }
 
-.nav { display: flex; align-items: center; gap: var(--s6); }
-.nav a { text-decoration: none; font-size: 0.9375rem; font-variation-settings: "wght" 500; color: inherit; opacity: 0.78; position: relative; padding-block: var(--s2); transition: opacity 0.25s var(--ease-out); }
-.nav a:not(.btn):hover { opacity: 1; }
-.nav a:not(.btn)::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease-out); }
-.nav a:not(.btn):hover::after { transform: scaleX(1); }
-.nav a:not(.btn)[aria-current="page"] { opacity: 1; }
-.nav a:not(.btn)[aria-current="page"]::after { transform: scaleX(1); }
+.nav { display: flex; align-items: center; gap: var(--s5); }
+
+/* Each top-level item is a group that drops a described menu. Hover opens it on
+   pointer devices; the button opens it on tap and for keyboard users. */
+.navgroup { position: relative; }
+.navgroup__btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: none; border: 0; padding: var(--s3) 0; margin: 0;
+  font-family: var(--f-text); font-size: 0.9375rem; font-variation-settings: "wght" 500;
+  color: inherit; opacity: 0.78; cursor: pointer;
+  transition: opacity 0.25s var(--ease-out);
+}
+.navgroup:hover .navgroup__btn, .navgroup.is-open .navgroup__btn, .navgroup.is-active .navgroup__btn { opacity: 1; }
+.navgroup__chev { width: 11px; height: 11px; flex: none; transition: transform 0.25s var(--ease-out); }
+.navgroup:hover .navgroup__chev, .navgroup.is-open .navgroup__chev { transform: rotate(180deg); }
+.navgroup.is-active .navgroup__btn::after {
+  content: ""; position: absolute; left: 0; bottom: 6px; width: 100%; height: 2px; background: currentColor;
+}
+
+.menu {
+  position: absolute; top: calc(100% + 10px); left: -20px; z-index: 5;
+  min-width: 316px; padding: var(--s3);
+  background: var(--paper); border: 1px solid var(--rule);
+  box-shadow: 0 20px 46px -22px rgba(8, 19, 15, .34);
+  display: grid; gap: 2px;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .22s var(--ease-out), transform .22s var(--ease-out), visibility .22s;
+}
+.navgroup:hover .menu, .navgroup:focus-within .menu, .navgroup.is-open .menu { opacity: 1; visibility: visible; transform: none; }
+.menu a {
+  display: grid; gap: 2px; padding: var(--s3) var(--s4); text-decoration: none;
+  color: var(--ink); opacity: 1; border-left: 2px solid transparent;
+  transition: background .2s var(--ease-out), border-color .2s var(--ease-out);
+}
+.menu a:hover, .menu a[aria-current="page"] { background: var(--paper-alt); border-left-color: var(--accent); }
+.menu__label { font-size: 0.9375rem; font-variation-settings: "wght" 600; }
+.menu__blurb { font-size: 0.8125rem; line-height: 1.4; color: var(--ink-soft); }
 
 .nav-toggle { display: none; background: none; border: 1px solid currentColor; color: inherit; width: 40px; height: 40px; cursor: pointer; align-items: center; justify-content: center; padding: 0; }
 .nav-toggle span { display: block; width: 16px; height: 1px; background: currentColor; position: relative; }
@@ -181,31 +215,28 @@ hr.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
 /* --------------------------------------------------------------------------
    6. Buttons
    -------------------------------------------------------------------------- */
+/* Buttons read entirely from the semantic accent tokens, so any ground that
+   remaps them — .on-night, .phead, .cta, the reversed masthead — gets correct
+   contrast without its own button rules. Adding a night section later cannot
+   silently reintroduce deep-green-on-near-black. */
 .btn {
   display: inline-flex; align-items: center; gap: var(--s3);
   padding: 14px var(--s5);
   font-family: var(--f-text); font-size: 0.9375rem; font-variation-settings: "wght" 600;
   text-decoration: none; cursor: pointer;
-  border: 1px solid var(--accent); background: transparent; color: var(--accent);
+  border: 1px solid var(--acc); background: transparent; color: var(--acc);
   transition: background 0.28s var(--ease-out), color 0.28s var(--ease-out), border-color 0.28s var(--ease-out);
   opacity: 1;
 }
-.btn:hover { background: var(--accent); color: #fff; }
+.btn:hover { background: var(--acc); color: var(--acc-on); }
 
-.btn--primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-.btn--primary:hover { background: var(--accent-hi); border-color: var(--accent-hi); color: #fff; }
+.btn--primary { background: var(--acc); border-color: var(--acc); color: var(--acc-on); }
+.btn--primary:hover { background: var(--acc-hi); border-color: var(--acc-hi); color: var(--acc-on); }
 
-/* On night grounds the buttons invert */
-.on-night .btn, .masthead.is-over .btn { border-color: var(--beam); color: var(--beam); }
-.on-night .btn:hover, .masthead.is-over .btn:hover { background: var(--beam); color: var(--night); }
-.on-night .btn--primary, .masthead.is-over .btn--primary { background: var(--beam); border-color: var(--beam); color: var(--night); }
-.on-night .btn--primary:hover, .masthead.is-over .btn--primary:hover { background: var(--halide); border-color: var(--halide); color: var(--night); }
-
-/* `.nav a` out-specifies `.btn`, so nav buttons restate their colours */
+/* `.nav a` out-specifies `.btn`, so nav buttons restate their colour from the
+   same token the button rules use. */
 .nav a.btn { opacity: 1; }
-.nav a.btn::after { display: none; }
-.nav a.btn--primary { color: #fff; }
-.masthead.is-over .nav a.btn--primary { color: var(--night); }
+.nav a.btn--primary { color: var(--acc-on); }
 
 .btn__arrow { width: 14px; height: 14px; flex: none; }
 
@@ -252,7 +283,10 @@ hr.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
   line-height: 1.16; letter-spacing: -0.035em;
   max-width: 24ch;
 }
-.statement .w { color: #c3cec9; transition: color 0.45s var(--ease-out); }
+/* The unread word colour still has to clear AA for large text on its own —
+   the paint-in is an enhancement, not a precondition for reading the line.
+   #86938d is 3.11:1 on paper; the earlier #c3cec9 was 1.57:1. */
+.statement .w { color: #86938d; transition: color 0.45s var(--ease-out); }
 .statement .w.is-read { color: var(--ink); }
 
 /* --------------------------------------------------------------------------
@@ -384,19 +418,33 @@ hr.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
   .foot__top { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1000px) {
   .nav-toggle { display: inline-flex; }
   .nav {
     position: fixed; inset: 72px 0 auto 0; flex-direction: column; align-items: stretch; gap: 0;
+    max-height: calc(100svh - 72px); overflow-y: auto;
     background: var(--paper); border-bottom: 1px solid var(--rule);
-    padding: var(--s3) var(--gutter) var(--s6);
+    padding: var(--s3) var(--gutter) var(--s7);
     transform: translateY(-8px); opacity: 0; visibility: hidden;
     transition: opacity 0.28s var(--ease-out), transform 0.28s var(--ease-out), visibility 0.28s;
   }
   .nav.is-open { opacity: 1; visibility: visible; transform: none; }
-  .nav a { color: var(--ink); opacity: 1; padding-block: var(--s4); border-bottom: 1px solid var(--rule); font-size: 1.0625rem; }
-  .nav a.btn { margin-top: var(--s5); justify-content: center; border-color: var(--accent); color: #fff; }
+  .nav a { color: var(--ink); opacity: 1; }
+
+  /* The drawer is an accordion, not a hover menu. */
+  .navgroup { border-bottom: 1px solid var(--rule); }
+  .navgroup__btn { width: 100%; justify-content: space-between; padding-block: var(--s4); font-size: 1.0625rem; color: var(--ink); opacity: 1; }
+  .navgroup.is-active .navgroup__btn::after { display: none; }
+  .menu {
+    position: static; opacity: 1; visibility: visible; transform: none; min-width: 0;
+    border: 0; box-shadow: none; background: transparent; padding: 0 0 var(--s4);
+    display: none;
+  }
+  .navgroup.is-open .menu { display: grid; }
+  .menu a { padding: var(--s3) var(--s4); background: var(--paper-alt); }
+  .nav__cta { margin-top: var(--s5); justify-content: center; border-color: var(--accent); color: #fff; }
   .masthead.is-over .nav a { color: var(--ink); }
+  .masthead.is-over .nav .navgroup__btn { color: var(--ink); }
   .masthead.is-over .nav a.btn--primary { color: #fff; }
 
   .split, .split--flip .split__media { grid-template-columns: 1fr; order: 0; }
