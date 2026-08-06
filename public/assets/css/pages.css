@@ -28,6 +28,38 @@
   padding-top: 150px; padding-bottom: clamp(56px, 7vw, 92px);
   overflow: hidden; isolation: isolate;
 }
+
+/* ---- Day head -------------------------------------------------------------
+   Eleven of fourteen interior pages opened on the same flat near-black green
+   slab, and a visitor moving between them saw one colour and nothing else.
+   Rhythm across a site works exactly like rhythm down a page: it needs a
+   counter-beat. This is that counter-beat — a paper ground carrying a daylight
+   photograph, with the full day token set so every child (buttons, breadcrumb,
+   kicker) inherits correct contrast rather than being patched one by one. */
+.phead--day {
+  background: var(--paper-alt); color: var(--ink);
+  --fg: var(--ink);
+  --fg-soft: var(--ink-soft);
+  --bg: var(--paper);
+  --line: var(--rule);
+  --acc: var(--accent);
+  --acc-hi: var(--accent-hi);
+  --acc-on: #fff;
+  border-bottom: 1px solid var(--rule);
+}
+.phead--day .phead__lead { color: var(--ink-soft); }
+.phead--day .crumb a { color: var(--ink-soft); }
+.phead--day .crumb a:hover { color: var(--accent); }
+/* The daylight scrim lifts the paper back over the picture rather than
+   darkening it — same job as the night scrim, opposite direction. */
+.phead--day .phead__media::after {
+  background:
+    linear-gradient(100deg, rgba(239,243,240,.97) 0%, rgba(239,243,240,.90) 38%, rgba(239,243,240,.55) 68%, rgba(239,243,240,.28) 100%);
+}
+.phead--day .phead__media img { filter: saturate(.5) contrast(1.04); }
+/* The lattice is a light-on-dark device; on paper it becomes grubby, so the
+   day head drops it and lets the photograph carry the texture. */
+.phead--day::before { display: none; }
 .phead__media { position: absolute; inset: 0; z-index: -2; }
 .phead__media img { width: 100%; height: 100%; object-fit: cover; }
 .phead__media::after {
@@ -110,7 +142,7 @@
    It stays drawn rather than screenshotted, and captioned illustrative, because
    there is no shipped app and a faked screenshot would be a capability claim. */
 .device {
-  --d: 7px;                       /* half-depth → 14px of visible thickness */
+  --d: 8.5px;                     /* half-depth → 17px of visible thickness */
   --r: 34px;
   position: relative; width: 268px; height: 552px; flex: none;
   transform-style: preserve-3d;
@@ -126,13 +158,16 @@
   pointer-events: none;
 }
 
+/* Graphite, not green. With silver rails a green-tinted body reads as plastic;
+   a near-neutral graphite with only a trace of the brand hue reads as metal and
+   glass, and lets the mint accent on the screen do the colour work. */
 .device__face {
   position: absolute; inset: 0; border-radius: var(--r);
-  background: linear-gradient(152deg, #1b2a24 0%, #0b1813 46%, #05100c 100%);
+  background: linear-gradient(152deg, #2b3234 0%, #14191a 44%, #080d0d 100%);
   transform: translateZ(var(--d));
   box-shadow:
-    inset 0 0 0 1px rgba(233,245,239,.20),      /* the chamfer catching light */
-    inset 0 1px 0 rgba(233,245,239,.30);
+    inset 0 0 0 1px rgba(240,245,243,.34),      /* the chamfer catching light */
+    inset 0 1px 0 rgba(240,245,243,.46);
 }
 .device__back {
   position: absolute; inset: 0; border-radius: var(--r);
@@ -141,27 +176,49 @@
   box-shadow: inset 0 0 0 1px rgba(34,69,58,.8);
 }
 
-/* The four rails. Inset at the ends so the face's rounded corners overhang. */
-.device__side { position: absolute; background: #0d1a15; }
+/* The four rails — brushed silver, not green.
+   A real machined phone rail is not one tone: it is a bright chamfer where the
+   bevel catches light, a fast fall to mid grey, a dark core down the middle of
+   the band, then a second softer chamfer on the far bevel. Six stops render
+   that; three read as a flat grey stripe. The tiny bright line at 4% is the
+   chamfer itself, and it is the single detail that makes the edge look
+   machined rather than drawn. */
+.device__side { position: absolute; background: #6d7a75; }
 .device__side--l,
 .device__side--r {
   top: var(--r); bottom: var(--r); width: calc(var(--d) * 2);
-  background: linear-gradient(90deg, #47645a 0%, #16241e 26%, #0a1410 62%, #2f4a40 100%);
+  background: linear-gradient(90deg,
+    #f2f5f4 0%, #e6ebe9 4%, #a8b4af 16%, #6f7d78 38%,
+    #3e4a46 62%, #7d8a85 84%, #c8d1cd 96%, #94a09b 100%);
 }
 .device__side--l { left: calc(var(--d) * -1); transform: rotateY(-90deg); }
 .device__side--r { right: calc(var(--d) * -1); transform: rotateY(90deg); }
 .device__side--t,
 .device__side--b {
   left: var(--r); right: var(--r); height: calc(var(--d) * 2);
-  background: linear-gradient(180deg, #3d574d 0%, #16241e 34%, #0a1410 70%, #29433a 100%);
+  background: linear-gradient(180deg,
+    #eef2f0 0%, #dfe5e3 5%, #9faba6 18%, #66736e 40%,
+    #38443f 64%, #78857f 86%, #bfc8c4 97%, #8b9691 100%);
 }
 .device__side--t { top: calc(var(--d) * -1); transform: rotateX(90deg); }
 .device__side--b { bottom: calc(var(--d) * -1); transform: rotateX(-90deg); }
 
-/* Hardware buttons, sitting proud of the left rail on the same plane. */
+/* Antenna bands — the two hairlines across the rail on a real handset. Small,
+   and exactly the kind of detail that reads as "photographed" rather than
+   "drawn" without anybody consciously noticing it. */
+.device__side--l::before, .device__side--l::after,
+.device__side--r::before, .device__side--r::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 2px;
+  background: rgba(20,28,25,.55);
+}
+.device__side--l::before, .device__side--r::before { top: 96px; }
+.device__side--l::after,  .device__side--r::after  { bottom: 118px; }
+
+/* Hardware buttons, machined from the same metal as the rail they sit on. */
 .device__btn {
   position: absolute; left: calc(var(--d) * -1 - 2px); width: 3px; border-radius: 2px;
-  background: linear-gradient(180deg, #3f5b50, #16241e);
+  background: linear-gradient(180deg, #dfe5e3 0%, #9aa6a1 22%, #55625d 70%, #8e9a95 100%);
+  box-shadow: 0 0 0 .5px rgba(10,16,14,.5);
   transform: translateZ(0);
 }
 .device__btn--vol { top: 120px; height: 56px; }
@@ -200,6 +257,14 @@
 @keyframes ping { 0% { transform: scale(.42); opacity: .8; } 70% { opacity: 0; } 100% { transform: scale(1); opacity: 0; } }
 .tapzone__core { width: 58px; height: 58px; border-radius: 50%; background: var(--beam); display: grid; place-items: center; color: var(--night); }
 .tapzone__core svg { width: 26px; height: 26px; }
+/* A ledger inside the screen — used by the settlement and wallet variants,
+   where the story is a set of figures rather than a single tap target. */
+.scrlist { margin: 16px 0 auto; display: grid; gap: 1px; background: var(--rule-night); border-block: 1px solid var(--rule-night); }
+.scrrow { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 8px 0; background: #061510; }
+.scrrow span { font-family: var(--f-mono); font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; color: var(--halide-soft); }
+.scrrow b { font-family: var(--f-mono); font-size: .6875rem; font-variation-settings: "wght" 600; color: var(--halide); font-variant-numeric: tabular-nums; }
+.scrrow--tot b { color: var(--beam); }
+
 .scr__foot { border-top: 1px solid var(--rule-night); padding-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: var(--s3); }
 .scr__foot .code { font-size: .5rem; letter-spacing: .13em; }
 .pill { font-family: var(--f-mono); font-size: .5rem; letter-spacing: .12em; text-transform: uppercase; color: var(--beam); border: 1px solid var(--beam); padding: 3px 7px; white-space: nowrap; }
@@ -463,6 +528,83 @@ details.faq p { padding-bottom: var(--s5); font-size: .9375rem; line-height: 1.6
 
 /* --------------------------------------------------------- Stat odometer */
 .stat__fig { font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------- The chain
+   Adapted from the CAC business-scope one-pager: the origination chain drawn
+   as linked nodes, with ChampPay's own position highlighted. Counterparties
+   are shown by ROLE, never by name — two entities in the chain carry open
+   verification items, and the naming rule in PRODUCT.md stands until an
+   agreement is executed and the party agrees to be named. */
+.chain { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); }
+.chain__n {
+  position: relative; padding: var(--s5) var(--s5) var(--s6);
+  border-right: 1px solid var(--line); background: var(--bg);
+}
+.chain__n:last-child { border-right: 0; }
+.chain__n.is-us { background: var(--paper-alt); }
+.on-night .chain__n { background: var(--night); }
+.on-night .chain__n.is-us { background: var(--night-alt); }
+.chain__k { font-family: var(--f-mono); font-size: .5625rem; letter-spacing: .14em; text-transform: uppercase; color: var(--fg-soft); }
+.chain__n.is-us .chain__k { color: var(--acc); }
+.chain__t { margin-top: var(--s3); font-size: 1rem; font-variation-settings: "wght" 600; line-height: 1.2; }
+.chain__b { margin-top: var(--s3); font-size: .8125rem; line-height: 1.5; color: var(--fg-soft); }
+/* The arrow between nodes — drawn on the divider, not typed as a character. */
+.chain__n:not(:last-child)::after {
+  content: ""; position: absolute; top: 50%; right: -5px; width: 9px; height: 9px;
+  border-top: 1px solid var(--acc); border-right: 1px solid var(--acc);
+  transform: translateY(-50%) rotate(45deg); background: var(--bg); z-index: 1;
+}
+.on-night .chain__n:not(:last-child)::after { background: var(--night); }
+
+/* ------------------------------------------------------------ Terms table
+   A real table, because a clause list read by somebody deciding whether to
+   stake their own reputation should be scannable in columns, not buried in
+   prose. Three columns: the clause, what it does, why it exists. */
+.terms { width: 100%; border-collapse: collapse; }
+.terms th {
+  text-align: left; font-family: var(--f-mono); font-size: .5625rem; letter-spacing: .14em;
+  text-transform: uppercase; font-weight: 400; color: var(--fg-soft);
+  border-bottom: 1px solid var(--fg); padding: 0 var(--s5) var(--s3) 0; vertical-align: bottom;
+}
+.terms td { padding: var(--s5) var(--s5) var(--s5) 0; border-bottom: 1px solid var(--line); vertical-align: top; font-size: .9375rem; line-height: 1.6; color: var(--fg-soft); }
+.terms td:first-child { color: var(--fg); font-variation-settings: "wght" 600; width: 22%; }
+.terms tr:last-child td { border-bottom: 0; }
+
+/* Status tags. Deliberately unglamorous: "Not held" is stated in the same
+   visual weight as anything else, because the credibility of the whole table
+   depends on the negatives not being whispered. */
+.tag {
+  display: inline-block; white-space: nowrap;
+  font-family: var(--f-mono); font-size: .5625rem; letter-spacing: .1em;
+  text-transform: uppercase; padding: 4px 8px; border: 1px solid var(--line); color: var(--fg-soft);
+}
+.tag--wip { border-color: var(--acc); color: var(--acc); }
+.tag--no { border-color: var(--fg-soft); color: var(--fg-soft); }
+
+/* ------------------------------------------------- Qualifier / two-column
+   "What works / what does not" — the honest pair. Used where saying no
+   clearly is more useful to the reader than another paragraph of yes. */
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.pair__col { background: var(--bg); padding: var(--s6); }
+.on-night .pair__col { background: var(--night); }
+.pair__h { display: flex; align-items: center; gap: var(--s3); padding-bottom: var(--s4); border-bottom: 1px solid var(--line); margin-bottom: var(--s4); }
+.pair__h .code { color: var(--fg); }
+.pair__h .dot { width: 8px; height: 8px; flex: none; background: var(--acc); }
+.pair__h .dot--o { background: none; border: 1px solid var(--fg-soft); }
+.pair ul { list-style: none; margin: 0; padding: 0; }
+.pair li { position: relative; padding-left: var(--s5); padding-block: var(--s3); font-size: .9375rem; line-height: 1.55; color: var(--fg-soft); border-bottom: 1px solid var(--line); }
+.pair li:last-child { border-bottom: 0; }
+.pair li::before { content: ""; position: absolute; left: 0; top: 19px; width: 9px; height: 2px; background: var(--acc); }
+.pair__col--no li::before { background: none; border-top: 1px solid var(--fg-soft); height: 0; }
+
+@media (max-width: 1000px) {
+  .chain { grid-template-columns: 1fr; }
+  .chain__n { border-right: 0; border-bottom: 1px solid var(--line); }
+  .chain__n:last-child { border-bottom: 0; }
+  .chain__n:not(:last-child)::after { top: auto; bottom: -5px; right: 50%; transform: translateX(50%) rotate(135deg); }
+  .pair { grid-template-columns: 1fr; }
+  .terms td:first-child { width: 34%; }
+}
 
 /* ------------------------------------------------------------ FX / market */
 .rates { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }

@@ -27,6 +27,9 @@
     // The home page opens on a photographic hero; interior pages open on the
     // compact night band. Either one is the dark ground the bar sits over.
     var hero = document.getElementById('hero') || document.querySelector('.phead');
+    // A day head is a PAPER ground. Reversing the bar over it would paint light
+    // text on light paper, so those pages keep the solid bar from the top.
+    var darkHead = hero && !hero.classList.contains('phead--day');
     var stuck = null;
     addJob(function () {
       // Flip once the bar would otherwise sit on the light page rather than the dark head.
@@ -34,8 +37,8 @@
       var next = window.scrollY > trigger;
       if (next === stuck) return;
       stuck = next;
-      masthead.classList.toggle('is-stuck', next);
-      if (hero) masthead.classList.toggle('is-over', !next);
+      masthead.classList.toggle('is-stuck', darkHead ? next : true);
+      if (darkHead) masthead.classList.toggle('is-over', !next);
     });
   }
 

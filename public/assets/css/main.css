@@ -409,6 +409,37 @@ hr.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
 .js [data-reveal][data-delay="2"] { transition-delay: 0.18s; }
 .js [data-reveal][data-delay="3"] { transition-delay: 0.27s; }
 
+/* Reveal direction varies by what the element DOES, not at random. Every
+   section entering with the same 16px lift is the motion equivalent of every
+   section having the same shape — it is the tell that nothing was decided.
+   Tables and ledgers settle from the side because they are read across;
+   figures and devices scale up slightly because they are objects. */
+.js .terms[data-reveal],
+.js .chain[data-reveal],
+.js .pair[data-reveal] { transform: translateX(-18px); }
+
+.js .stage[data-reveal],
+.js .split__media[data-reveal] { transform: scale(.965); }
+
+.js .ladder__tier[data-reveal] { transform: translateY(24px); }
+
+/* Rows inside a revealed table stagger in behind it, so a six-row table reads
+   as a list arriving rather than a block appearing.
+   Scoped to [data-reveal] deliberately: a table without it never gets .is-in,
+   and an unscoped rule would leave those rows at opacity 0 permanently. Rows
+   nobody can read is a worse failure than rows that do not animate. */
+.js .terms[data-reveal] tbody tr { opacity: 0; transform: translateY(8px); transition: opacity .5s var(--ease-out), transform .5s var(--ease-out); }
+.js .terms.is-in tbody tr { opacity: 1; transform: none; }
+.js .terms.is-in tbody tr:nth-child(1) { transition-delay: .06s; }
+.js .terms.is-in tbody tr:nth-child(2) { transition-delay: .12s; }
+.js .terms.is-in tbody tr:nth-child(3) { transition-delay: .18s; }
+.js .terms.is-in tbody tr:nth-child(4) { transition-delay: .24s; }
+.js .terms.is-in tbody tr:nth-child(5) { transition-delay: .30s; }
+.js .terms.is-in tbody tr:nth-child(6) { transition-delay: .36s; }
+
+/* Cards lift a little further on hover now that they carry more weight. */
+.card--link { will-change: transform; }
+
 /* --------------------------------------------------------------------------
    18. Responsive
    -------------------------------------------------------------------------- */
@@ -474,6 +505,7 @@ hr.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
     transition-duration: 0.001ms !important;
   }
   .js [data-reveal] { opacity: 1; transform: none; }
+  .js .terms[data-reveal] tbody tr { opacity: 1; transform: none; }
   .statement .w { color: var(--ink); }
   .panel:hover .panel__img { transform: none; }
 }
