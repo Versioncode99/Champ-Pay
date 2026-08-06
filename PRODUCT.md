@@ -119,11 +119,15 @@ re-solve it by re-adding a disclaimer.
 
 ## Brand Commitments
 
-- **Name:** ChampPay. Legal entity in footer: **Champ Pay Nigeria Limited**.
+- **Name:** ChampPay. **Champ Pay Nigeria Limited is being incorporated.** The
+  public footer uses ChampPay until the CAC filing is complete and an RC number
+  exists.
 - **Slogan (binding):** "Pay Like a Champ".
 - **Voice:** institutional, conservative, counterparty-appropriate. Assume a
   bank's risk team reads every word.
-- **Logo undecided.** Seven directions at `/logos` (internal, `noindex`).
+- **Logo approved 2026-08-06.** The floodlight-head C mark is final for the
+  current website. Seven historical directions remain at `/logos` (internal,
+  `noindex`).
 - **Third parties are not named** until an agreement is executed *and* they have
   agreed to be named. This includes partners, counterparties and introducer-chain
   entities.

@@ -147,7 +147,10 @@
       }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
       items.forEach(function (el) { io.observe(el); });
 
-      window.addEventListener('load', function () { setTimeout(showAll, 2500); });
+      // This script can initialise after `load` has already fired (for example
+      // from a warm cache or a fast static response). Schedule the safety net
+      // directly so off-screen content is never stranded at opacity: 0.
+      setTimeout(showAll, 2500);
     }
   }
 

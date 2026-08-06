@@ -18,14 +18,14 @@
   --accent: #0a6b49;
   --accent-hi: #08573b;
 
-  /* Night */
-  --night: #05100c;
-  --night-alt: #0a1a13;
-  --halide: #e9f5ef;
-  --halide-soft: #9fb8ae;
+  /* Night — neutral ink; green survives only as the --beam / --accent pop */
+  --night: #0b0c0e;
+  --night-alt: #15171b;
+  --halide: #eef1f3;
+  --halide-soft: #a6adb4;
   --beam: #7fe3be;
   --sodium: #ffb347;
-  --rule-night: #22453a;
+  --rule-night: #2a2f34;
 
   /* Semantic — flipped inside .on-night */
   --fg: var(--ink);
@@ -206,7 +206,7 @@ hr.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
 .menu__label { font-size: 0.9375rem; font-variation-settings: "wght" 600; }
 .menu__blurb { font-size: 0.8125rem; line-height: 1.4; color: var(--ink-soft); }
 
-.nav-toggle { display: none; background: none; border: 1px solid currentColor; color: inherit; width: 40px; height: 40px; cursor: pointer; align-items: center; justify-content: center; padding: 0; }
+.nav-toggle { display: none; background: none; border: 1px solid currentColor; color: inherit; width: 44px; height: 44px; cursor: pointer; align-items: center; justify-content: center; padding: 0; }
 .nav-toggle span { display: block; width: 16px; height: 1px; background: currentColor; position: relative; }
 .nav-toggle span::before, .nav-toggle span::after { content: ""; position: absolute; left: 0; width: 16px; height: 1px; background: currentColor; }
 .nav-toggle span::before { top: -5px; }

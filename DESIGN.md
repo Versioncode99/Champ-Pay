@@ -2,11 +2,13 @@
 
 <!-- impeccable:design-schema 1 -->
 
-**Current: v3 — "Day and Night", multi-page (2026-08-04).**
+**Current: v4 — "The floodlight reaches the counter" (2026-08-06).**
 v1 was "The Floodlight Array" (an all-dark page with a drawn CSS lamp grid);
 v2 kept its idea but carried it with real photography instead of drawn
-furniture; v3 extends v2 across fifteen pages. The tokens, type and two grounds
-below are v2's and are unchanged — v3 adds page architecture, not a new look.
+furniture; v3 extended v2 across fifteen pages. v4 keeps the same Day and Night
+identity, neutralises the night ground, and brings the photography from distant
+infrastructure into the Nigerian merchant scene. The authored product moment on
+`/merchants` is now a four-surface acceptance console rather than a lone phone.
 
 ## Direction contract — DAY AND NIGHT
 
@@ -48,13 +50,13 @@ Strategy: **two grounds, one accent family.** Never "dark mode with an accent".
 | `--rule` | `#d9e1dc` | Day hairlines |
 | `--accent` | `#0a6b49` | Day accent |
 | `--accent-hi` | `#08573b` | Day accent, pressed |
-| `--night` | `#05100c` | Night ground |
-| `--night-alt` | `#0a1a13` | Raised night panels |
-| `--halide` | `#e9f5ef` | Night text |
-| `--halide-soft` | `#9fb8ae` | Night secondary text |
+| `--night` | `#0b0c0e` | Neutral ink night ground |
+| `--night-alt` | `#15171b` | Raised graphite panels |
+| `--halide` | `#eef1f3` | Night text |
+| `--halide-soft` | `#a6adb4` | Night secondary text |
 | `--beam` | `#7fe3be` | Night accent |
 | `--sodium` | `#ffb347` | Warm/live state — used sparingly |
-| `--rule-night` | `#22453a` | Night hairlines |
+| `--rule-night` | `#2a2f34` | Night hairlines |
 
 ### Semantic tokens — the rule that matters
 
@@ -100,6 +102,15 @@ because a company with no shipped app has no honest screenshot to use. It is
 **drawn**, and captioned as illustrative, precisely so it cannot be mistaken for
 a photograph of a shipping product.
 
+## The acceptance console — one system, four methods
+
+The merchants page deliberately does not use the 3D device. A front-on,
+asymmetric console shows SoftPOS, static/dynamic QR, proximity payment and the
+merchant operating system as four surfaces feeding one account and settlement
+rail. It is the page's authored switch-on moment and is labelled illustrative.
+The shared `.device` remains unchanged everywhere its dimensional composition
+already works.
+
 ## Motion
 
 Native motion of the world: **the switch-on** — stepped and staggered, never a
@@ -132,13 +143,18 @@ a solid geometric mark at favicon scale.
 
 Wordmark: **CHAMPPAY** in Archivo Expanded 700, tight tracking.
 
-**Not final.** Seven directions live at `/logos` (internal, `noindex`) awaiting
-a decision.
+**Approved 2026-08-06.** The floodlight-head C mark and Archivo Expanded
+CHAMPPAY wordmark are the selected identity. `/logos` remains an internal,
+`noindex` historical comparison page.
 
 ## Imagery
 
-**Real photography only, and every image is checked for third-party marks
-before use.** Five sourced photographs were rejected and deleted during v2 for
+**Photography is either sourced or generated as representative context, and
+every image is inspected before use.** Documentary merchant scenes may show the
+use environment, but never imply a named customer or a shipping ChampPay app.
+No visible product UI, logos, cash, bank cards or branded uniforms appear in
+generated context photography. Every sourced image is checked for third-party
+marks before use. Five sourced photographs were rejected and deleted during v2 for
 carrying NFL/Super Bowl, Mercedes-Benz, Paris Saint-Germain, Mastercard, Pepsi,
 LaLiga and Athletic Bilbao branding. Stadium and crowd photography is almost
 universally branded; African urban night and infrastructure is cleaner *and*
