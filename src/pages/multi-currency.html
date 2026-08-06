@@ -43,6 +43,37 @@
           <p class="card__body">Sending and receiving across corridors with the settlement time stated up front, because a business plans around when money lands, not what it was quoted.</p>
         </div>
       </div>
+
+      <!-- Live reference rates. The multi-currency line previously carried no
+           data at all, which is a strange thing for a page about currency. The
+           rates are read by the visitor's browser from a public source and are
+           labelled indicative — they are context, never a ChampPay quote. -->
+      <div class="ticker__head mt8" data-reveal>
+        <p class="code">Reference rates &middot; against the US dollar</p>
+      </div>
+      <div class="rates" data-reveal>
+        <div class="rate">
+          <p class="rate__pair">USD / NGN</p>
+          <p class="rate__v" data-fx="NGN">&mdash;</p>
+          <p class="rate__n">The rate every Nigerian business plans around.</p>
+        </div>
+        <div class="rate">
+          <p class="rate__pair">USD / EUR</p>
+          <p class="rate__v" data-fx="EUR">&mdash;</p>
+          <p class="rate__n">Euro-denominated suppliers and platform costs.</p>
+        </div>
+        <div class="rate">
+          <p class="rate__pair">USD / GBP</p>
+          <p class="rate__v" data-fx="GBP">&mdash;</p>
+          <p class="rate__n">Sterling invoicing and UK counterparties.</p>
+        </div>
+        <div class="rate">
+          <p class="rate__pair">USD / ZAR</p>
+          <p class="rate__v" data-fx="ZAR">&mdash;</p>
+          <p class="rate__n">The next corridor south, and a live comparison.</p>
+        </div>
+      </div>
+      <p class="srcnote mt5" id="fxStamp" data-reveal>Mid-market reference rates against the US dollar. Source: open.er-api.com. Indicative only &mdash; not a ChampPay quote or a dealable rate.</p>
     </div>
   </section>
 

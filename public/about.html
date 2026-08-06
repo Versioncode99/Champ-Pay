@@ -181,7 +181,7 @@
       </div>
 
       <div data-reveal>
-        <div class="fact"><p class="fact__k">Legal entity</p><p class="fact__v">Champ Pay Nigeria Limited, incorporated in Nigeria.</p></div>
+        <div class="fact"><p class="fact__k">Legal entity</p><p class="fact__v">Champ Pay Nigeria Limited &mdash; being incorporated in Nigeria. Registration number available once the Corporate Affairs Commission filing completes.</p></div>
         <div class="fact"><p class="fact__k">Base</p><p class="fact__v">Lagos, Nigeria — where the first market is, and where the team is.</p></div>
         <div class="fact"><p class="fact__k">What we do</p><p class="fact__v">Merchant acceptance, multi-currency treasury, and institutional digital-asset liquidity.</p></div>
         <div class="fact"><p class="fact__k">First market</p><p class="fact__v">Nigeria domestic, with regional corridors following.</p></div>
@@ -253,13 +253,20 @@
     </div>
 
     <div class="foot__bottom">
-      <p class="foot__legal">© <span id="yr">2026</span> Champ Pay Nigeria Limited. All rights reserved. · <a href="/legal">Legal &amp; privacy</a></p>
-      <p class="code">Built in Lagos</p>
+      <!-- The entity line says "ChampPay" rather than naming a registered
+           company: incorporation is in progress and no RC number exists yet.
+           See PRODUCT.md → Capabilities and Constraints. -->
+      <p class="foot__legal">© <span id="yr">2026</span> ChampPay. All rights reserved. · <a href="/legal">Legal &amp; privacy</a></p>
+      <p class="edgeline">Built in Lagos · served from <span id="edgeColo">the edge</span></p>
     </div>
   </div>
 </footer>
 
 <script src="/assets/js/main.js" defer></script>
+<!-- data.js is site-wide because the footer's edge line is: each of its three
+     jobs no-ops unless its target element is on the page, so pages without an
+     FX or World Bank block cost one same-origin request and nothing else. -->
+<script src="/assets/js/data.js" defer></script>
 
 </body>
 </html>

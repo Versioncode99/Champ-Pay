@@ -27,6 +27,29 @@ const TYPES = {
 createServer(async (req, res) => {
   try {
     let path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+
+    // Dev parity for the Worker's /api/indicators route. Kept deliberately
+    // simple — the deployed implementation, including its edge caching, is in
+    // worker.js. Without this, data.js cannot be tested locally at all, because
+    // the World Bank API refuses cross-origin browser requests.
+    if (path === '/api/indicators') {
+      const codes = { population: 'SP.POP.TOTL', gdp: 'NY.GDP.MKTP.CD' };
+      const data = {};
+      await Promise.all(Object.entries(codes).map(async ([key, code]) => {
+        data[key] = null;
+        try {
+          const r = await fetch(`https://api.worldbank.org/v2/country/NGA/indicator/${code}?format=json&mrnev=1`);
+          if (!r.ok) return;
+          const j = await r.json();
+          const row = Array.isArray(j) && Array.isArray(j[1]) ? j[1][0] : null;
+          if (row && row.value != null) data[key] = { value: Number(row.value), year: row.date };
+        } catch { /* leave null */ }
+      }));
+      res.writeHead(Object.values(data).some(Boolean) ? 200 : 503, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ source: 'World Bank Open Data', country: 'Nigeria', data }));
+      return;
+    }
+
     if (path.endsWith('/')) path += 'index.html';
     if (!extname(path)) path += '.html';
 

@@ -4,7 +4,7 @@
   "description": "Institutional-grade digital-asset liquidity for exchanges, fintechs and treasury desks, with live market reference data.",
   "darkhero": true,
   "priority": 0.8,
-  "scripts": ["/assets/js/market.js"]
+  "scripts": ["/assets/js/live.js", "/assets/js/market.js"]
 } -->
 
   <section class="phead">
@@ -19,12 +19,34 @@
     </div>
   </section>
 
-  <!-- ------------------------------------------------------------- Ticker -->
+  <!-- ------------------------------------------------------------- Ticker
+       Cells are authored here rather than built by script, for three reasons:
+       the page reads correctly with scripting off (every figure is an honest
+       em-dash), the marquee animation is never restarted by a data refresh,
+       and live.js and market.js can patch their own fields without either one
+       destroying markup it does not own.
+
+       The list is printed twice because the marquee translates by exactly
+       -50%; live.js updates every cell carrying a given data-sym. -->
   <div class="ticker" aria-hidden="true">
-    <!-- Default content reads correctly whether or not the script runs: with
-         JavaScript it is replaced by live rows, without it, it stays true. -->
     <div class="ticker__track" id="tickerTrack">
-      <div class="tick"><span class="tick__sym">Live reference prices load in your browser</span></div>
+      <div class="tick" data-sym="BTC"><span class="tick__sym">BTC</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="ETH"><span class="tick__sym">ETH</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="USDT"><span class="tick__sym">USDT</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="SOL"><span class="tick__sym">SOL</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="XRP"><span class="tick__sym">XRP</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="USDC"><span class="tick__sym">USDC</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="BNB"><span class="tick__sym">BNB</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="TRX"><span class="tick__sym">TRX</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+
+      <div class="tick" data-sym="BTC"><span class="tick__sym">BTC</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="ETH"><span class="tick__sym">ETH</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="USDT"><span class="tick__sym">USDT</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="SOL"><span class="tick__sym">SOL</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="XRP"><span class="tick__sym">XRP</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="USDC"><span class="tick__sym">USDC</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="BNB"><span class="tick__sym">BNB</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
+      <div class="tick" data-sym="TRX"><span class="tick__sym">TRX</span><span class="tick__px" data-field="price">&mdash;</span><span class="tick__ch" data-field="ch24">&mdash;</span></div>
     </div>
   </div>
 
@@ -69,9 +91,13 @@
         <p class="t-lead" data-reveal data-delay="1">Public market data, refreshed in your browser. It is context for the market we operate in — it is not a ChampPay quote, an executable price, or an offer to trade.</p>
       </div>
 
+      <div class="ticker__head" data-reveal>
+        <p class="code">Spot reference &middot; streaming</p>
+        <span class="livestate" id="liveState" data-state="connecting">Connecting</span>
+      </div>
+
       <div class="tablewrap" data-reveal>
         <table class="mkt" id="mktTable">
-          <caption class="code" style="text-align:left;padding-bottom:var(--s4)">Spot reference · updates automatically</caption>
           <thead>
             <tr>
               <th scope="col">Asset</th>
@@ -82,11 +108,18 @@
             </tr>
           </thead>
           <tbody id="mktBody">
-            <tr><td colspan="5" style="text-align:left;color:var(--halide-soft)">Live reference prices load in your browser. If they do not appear, JavaScript is disabled or the data source is temporarily unavailable.</td></tr>
+            <tr data-sym="BTC"><td>Bitcoin<span class="sym">BTC</span></td><td data-field="price">&mdash;</td><td data-field="ch24">&mdash;</td><td data-field="ch7d">&mdash;</td><td data-field="mcap">&mdash;</td></tr>
+            <tr data-sym="ETH"><td>Ethereum<span class="sym">ETH</span></td><td data-field="price">&mdash;</td><td data-field="ch24">&mdash;</td><td data-field="ch7d">&mdash;</td><td data-field="mcap">&mdash;</td></tr>
+            <tr data-sym="USDT"><td>Tether<span class="sym">USDT</span></td><td data-field="price">&mdash;</td><td data-field="ch24">&mdash;</td><td data-field="ch7d">&mdash;</td><td data-field="mcap">&mdash;</td></tr>
+            <tr data-sym="SOL"><td>Solana<span class="sym">SOL</span></td><td data-field="price">&mdash;</td><td data-field="ch24">&mdash;</td><td data-field="ch7d">&mdash;</td><td data-field="mcap">&mdash;</td></tr>
+            <tr data-sym="XRP"><td>XRP<span class="sym">XRP</span></td><td data-field="price">&mdash;</td><td data-field="ch24">&mdash;</td><td data-field="ch7d">&mdash;</td><td data-field="mcap">&mdash;</td></tr>
+            <tr data-sym="USDC"><td>USD Coin<span class="sym">USDC</span></td><td data-field="price">&mdash;</td><td data-field="ch24">&mdash;</td><td data-field="ch7d">&mdash;</td><td data-field="mcap">&mdash;</td></tr>
+            <tr data-sym="BNB"><td>BNB<span class="sym">BNB</span></td><td data-field="price">&mdash;</td><td data-field="ch24">&mdash;</td><td data-field="ch7d">&mdash;</td><td data-field="mcap">&mdash;</td></tr>
+            <tr data-sym="TRX"><td>TRON<span class="sym">TRX</span></td><td data-field="price">&mdash;</td><td data-field="ch24">&mdash;</td><td data-field="ch7d">&mdash;</td><td data-field="mcap">&mdash;</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="code mt5" id="mktStamp" data-reveal>Source: CoinGecko public API</p>
+      <p class="srcnote mt5" id="mktStamp" data-reveal>Price and 24h change stream from Binance. Market cap and 7d from CoinGecko. Public data, shown for market context only.</p>
     </div>
   </section>
 

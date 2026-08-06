@@ -9,7 +9,6 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "ChampPay",
-    "legalName": "Champ Pay Nigeria Limited",
     "url": "https://champ-pay.com",
     "logo": "https://champ-pay.com/assets/brand/mark.svg",
     "slogan": "Pay Like a Champ",
@@ -83,8 +82,20 @@
             <span><span class="chip__t">QR &amp; proximity</span><br><span class="chip__s">No account numbers</span></span>
           </div>
 
-          <div class="device" role="img" aria-label="A phone running the ChampPay merchant app, showing a five thousand naira charge awaiting a contactless tap">
-            <div class="device__notch"></div>
+          <div class="device" role="img" aria-label="An illustration of a phone running the ChampPay merchant app, showing a five thousand naira charge awaiting a contactless tap">
+            <!-- A real box: front and back faces at ±7px, four turned side
+                 rails between them, and the hardware buttons proud of the
+                 rails. Drawn, not screenshotted — see DESIGN.md. -->
+            <div class="device__back" aria-hidden="true"></div>
+            <div class="device__side device__side--l" aria-hidden="true"></div>
+            <div class="device__side device__side--r" aria-hidden="true"></div>
+            <div class="device__side device__side--t" aria-hidden="true"></div>
+            <div class="device__side device__side--b" aria-hidden="true"></div>
+            <div class="device__btn device__btn--vol" aria-hidden="true"></div>
+            <div class="device__btn device__btn--vol2" aria-hidden="true"></div>
+            <div class="device__btn device__btn--pwr" aria-hidden="true"></div>
+            <div class="device__face" aria-hidden="true"></div>
+            <div class="device__notch" aria-hidden="true"></div>
             <div class="device__screen">
               <div class="scr">
                 <p class="scr__brand">
@@ -119,6 +130,101 @@
           </div>
         </div>
       </div>
+
+      <!-- A technical strip under the rig. The band previously ran ~150px of
+           empty ground below the device; density is part of the category, and
+           this is the substance that belongs there. -->
+      <div class="flow mt8" data-reveal>
+        <div class="flow__step">
+          <p class="flow__n">01</p>
+          <p class="flow__t">Android SoftPOS</p>
+          <p class="flow__b">Contactless acceptance on the merchant&rsquo;s own NFC handset. No terminal to buy, carry, charge or replace.</p>
+        </div>
+        <div class="flow__step">
+          <p class="flow__n">02</p>
+          <p class="flow__t">QR, static &amp; dynamic</p>
+          <p class="flow__b">A printed code for the counter, a generated one for the amount. Works on the phone the customer already has.</p>
+        </div>
+        <div class="flow__step">
+          <p class="flow__n">03</p>
+          <p class="flow__t">Proximity P2P</p>
+          <p class="flow__b">Transfer between two people in the same place without either reading out an account number.</p>
+        </div>
+        <div class="flow__step">
+          <p class="flow__n">04</p>
+          <p class="flow__t">Merchant OS</p>
+          <p class="flow__b">Takings, staff, stock and reconciliation in one place, from the same handset that took the payment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ THE LADDER ============================
+       From the CAC business-scope one-pager (4 Aug 2026): the full
+       institutional → merchant → retail range the company is being built to
+       cover. Stated as range and direction, never as present capability —
+       the objects authorise, they do not license. -->
+  <section class="sec band band--alt" id="ladder">
+    <div class="wrap">
+      <div class="sec__head--split">
+        <div data-reveal>
+          <p class="kicker">The range</p>
+          <h2 class="t-h2 mt5">From the institution to the individual.</h2>
+        </div>
+        <p class="t-lead" data-reveal data-delay="1">Most payment companies pick a rung and stay on it. The rails that settle a bank&rsquo;s treasury and the rails that settle a market trader&rsquo;s Tuesday are the same rails — so the company is being built to cover the whole ladder, and the constitution was drafted that way deliberately.</p>
+      </div>
+
+      <div class="ladder mt8">
+        <div class="ladder__tier" data-reveal>
+          <div>
+            <p class="ladder__n">Tier I</p>
+            <p class="ladder__t">Institutional &amp; wholesale</p>
+            <p class="ladder__who">Banks, exchanges, fintechs and treasury desks.</p>
+          </div>
+          <ul class="ladder__list">
+            <li>Wholesale digital-asset liquidity<i>Institutional-rate supply</i></li>
+            <li>Treasury &amp; foreign exchange<i>Multi-currency treasury</i></li>
+            <li>Correspondent &amp; sponsor banking<i>Settlement access</i></li>
+            <li>Introduction, agency &amp; origination<i>Under written mandate</i></li>
+            <li>Transaction data &amp; intelligence<i>Telemetry, not identity</i></li>
+            <li>Structuring &amp; advisory<i>Corridor design</i></li>
+          </ul>
+        </div>
+
+        <div class="ladder__tier" data-reveal>
+          <div>
+            <p class="ladder__n">Tier II</p>
+            <p class="ladder__t">Commercial &amp; merchant</p>
+            <p class="ladder__who">Enterprises, chains, SMEs and operators.</p>
+          </div>
+          <ul class="ladder__list">
+            <li>Card acceptance<i>Domestic and international schemes</i></li>
+            <li>Processing &amp; switching<i>Pay-in, payout, reconciliation</i></li>
+            <li>Merchant operating system<i>Reporting, analytics, stock</i></li>
+            <li>Agency banking &amp; agent networks<i>Super-agent and sub-agent</i></li>
+            <li>Payroll, disbursement &amp; collections<i>Bulk and recurring</i></li>
+            <li>Terminal supply &amp; deployment<i>Physical and software-based</i></li>
+          </ul>
+        </div>
+
+        <div class="ladder__tier" data-reveal>
+          <div>
+            <p class="ladder__n">Tier III</p>
+            <p class="ladder__t">Retail &amp; individual</p>
+            <p class="ladder__who">Consumers, traders, and the people banks have not reached.</p>
+          </div>
+          <ul class="ladder__list">
+            <li>QR payments<i>Static and dynamic acceptance</i></li>
+            <li>Android SoftPOS<i>The phone becomes the terminal</i></li>
+            <li>Proximity P2P transfer<i>No account numbers</i></li>
+            <li>Multi-currency and USD wallets<i>Dollar-denominated balances</i></li>
+            <li>Cross-border payments &amp; remittance<i>Inbound and outbound</i></li>
+            <li>Instant and same-day settlement<i>Merchant and individual</i></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note mt7" data-reveal><strong>On what this is.</strong> The ladder above is the range the company is being built to cover and is authorised to carry on — not a list of services available today. Each rung carries its own licensing regime, and regulated activity runs through licensed partners until the corresponding authorisation is held directly. Where something is live, it says so on its own page.</p>
     </div>
   </section>
 
@@ -182,27 +288,54 @@
 
       <div class="stats mt8" data-reveal>
         <div class="stat">
-          <p class="stat__fig">&#8358;1.07qn</p>
+          <p class="stat__fig" data-count>&#8358;1.07qn</p>
           <p class="stat__label">Electronic payments, 2025</p>
           <p class="stat__note">A record year, up 79% on 2024. Source: NIBSS, as reported.</p>
         </div>
         <div class="stat">
-          <p class="stat__fig">5.9m</p>
+          <p class="stat__fig" data-count>5.9m</p>
           <p class="stat__label">Active POS terminals</p>
           <p class="stat__note">March 2025. Every one of them is hardware somebody paid for.</p>
         </div>
         <div class="stat">
-          <p class="stat__fig">12.1bn</p>
+          <p class="stat__fig" data-count>12.1bn</p>
           <p class="stat__label">Instant transfers, 2024</p>
           <p class="stat__note">NIBSS Instant Payments volume for the year.</p>
         </div>
         <div class="stat">
-          <p class="stat__fig">82%</p>
+          <p class="stat__fig" data-count>82%</p>
           <p class="stat__label">Projected adult penetration</p>
           <p class="stat__note">Digital payment penetration forecast for 2026. Indicative.</p>
         </div>
       </div>
       <p class="t-body mt5" style="font-size:.8125rem" data-reveal>Market figures, published by third parties and cited as reported. They describe Nigeria, not ChampPay.</p>
+
+      <!-- Pulled live from the World Bank rather than typed in, so the figures
+           cannot go stale and the publisher is named on the page. These are the
+           SoftPOS argument stated as fact: the handsets are already there. -->
+      <div class="rates mt8" data-reveal>
+        <div class="rate">
+          <p class="rate__pair">Population</p>
+          <p class="rate__v" id="wbPopulation">&mdash;</p>
+          <p class="rate__n">People in Nigeria — the largest single market in Africa.</p>
+        </div>
+        <div class="rate">
+          <p class="rate__pair">GDP</p>
+          <p class="rate__v" id="wbGdp">&mdash;</p>
+          <p class="rate__n">Current US dollars, most recent reported year.</p>
+        </div>
+        <div class="rate">
+          <p class="rate__pair">USD / NGN</p>
+          <p class="rate__v" data-fx="NGN">&mdash;</p>
+          <p class="rate__n">The rate every Nigerian business plans around.</p>
+        </div>
+        <div class="rate">
+          <p class="rate__pair">USD / ZAR</p>
+          <p class="rate__v" data-fx="ZAR">&mdash;</p>
+          <p class="rate__n">The next corridor south, and a live comparison.</p>
+        </div>
+      </div>
+      <p class="srcnote mt5" id="wbStamp" data-reveal>Population and GDP: World Bank Open Data, Nigeria. Rates: open.er-api.com, indicative. These figures describe Nigeria, not ChampPay.</p>
     </div>
   </section>
 

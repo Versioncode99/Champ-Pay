@@ -76,8 +76,8 @@ during diligence.
 
 ## Capabilities and Constraints
 
-**Real today:** Nigeria-incorporated company (Champ Pay Nigeria Limited); an
-in-market network of operator, banking and government relationships; a
+**Real today:** an in-market network of operator, banking and government
+relationships; a
 documented commercial framework (introducer agreements, NCNDA, non-circumvention
 and tail terms); primary market research across African exchanges; the domain
 and infrastructure.
@@ -90,6 +90,13 @@ and infrastructure.
 - PCI DSS certification
 - VASP or other digital-asset licensing — status unconfirmed
 - Own pay-in, payout or settlement rails
+- **Nigerian incorporation.** Added 2026-08-06. Champ Pay Nigeria Limited is
+  *being* incorporated — the CAC scope pack was built 4 August 2026 and counsel
+  has not yet been instructed. **No RC number exists.** The site previously
+  said "a company incorporated in Nigeria" on `/legal` and listed a
+  "Nigeria-incorporated company" here as real today; both were corrected.
+  Do not restore the definite wording anywhere — footer, schema, pitch deck or
+  bank pack — until the certificate is in hand.
 
 **Terminology:** "acquiring", "processing", "licensed", "regulated" and "PCI
 compliant" are reserved words. They may describe the industry or the road ahead.

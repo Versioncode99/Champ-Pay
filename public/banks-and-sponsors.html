@@ -239,13 +239,20 @@
     </div>
 
     <div class="foot__bottom">
-      <p class="foot__legal">© <span id="yr">2026</span> Champ Pay Nigeria Limited. All rights reserved. · <a href="/legal">Legal &amp; privacy</a></p>
-      <p class="code">Built in Lagos</p>
+      <!-- The entity line says "ChampPay" rather than naming a registered
+           company: incorporation is in progress and no RC number exists yet.
+           See PRODUCT.md → Capabilities and Constraints. -->
+      <p class="foot__legal">© <span id="yr">2026</span> ChampPay. All rights reserved. · <a href="/legal">Legal &amp; privacy</a></p>
+      <p class="edgeline">Built in Lagos · served from <span id="edgeColo">the edge</span></p>
     </div>
   </div>
 </footer>
 
 <script src="/assets/js/main.js" defer></script>
+<!-- data.js is site-wide because the footer's edge line is: each of its three
+     jobs no-ops unless its target element is on the page, so pages without an
+     FX or World Bank block cost one same-origin request and nothing else. -->
+<script src="/assets/js/data.js" defer></script>
 
 </body>
 </html>
