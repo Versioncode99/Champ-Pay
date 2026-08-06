@@ -1,10 +1,19 @@
 /**
  * Cloudflare Pages Function — POST /api/contact
  *
- * Requires two environment variables set in the Cloudflare Pages project
- * (Settings → Environment variables). Until they are set, this endpoint
- * returns 503 and the form surfaces a "not configured yet" message rather
- * than silently swallowing enquiries.
+ * Requires two secrets on the **Worker** `champ-pay`. Corrected 2026-08-06:
+ * this said "the Cloudflare Pages project (Settings → Environment variables)",
+ * which is the wrong product — the site has been served by a Worker since the
+ * 2026-08-03 restructure, and there is no Pages project to configure.
+ *
+ * Set them either way:
+ *   npx wrangler secret put RESEND_API_KEY     (prompts; the value is not echoed)
+ *   npx wrangler secret put CONTACT_TO
+ * or dash.cloudflare.com → Workers & Pages → champ-pay → Settings → Variables
+ * and secrets → Add → type "Secret".
+ *
+ * Note: the Cloudflare MCP servers cannot do this — they expose Workers read,
+ * D1, KV, R2 and Hyperdrive, but no secret-setting tool.
  *
  *   RESEND_API_KEY  — API key from https://resend.com (free tier is sufficient)
  *   CONTACT_TO      — destination address for enquiries
