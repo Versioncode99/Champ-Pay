@@ -55,6 +55,16 @@ export default {
   async fetch(request, env) {
     const { pathname } = new URL(request.url);
 
+    const newsroomRedirects = {
+      '/newsroom/building-in-public': '/newsroom/nigeria-payments-vision-2028',
+      '/newsroom/building-in-public.html': '/newsroom/nigeria-payments-vision-2028',
+      '/newsroom/champ-pay-com-live': '/newsroom/instant-payments-controls',
+      '/newsroom/champ-pay-com-live.html': '/newsroom/instant-payments-controls'
+    };
+    if (newsroomRedirects[pathname]) {
+      return Response.redirect(new URL(newsroomRedirects[pathname], request.url), 301);
+    }
+
     if (pathname === '/api/contact') {
       if (request.method !== 'POST') {
         return new Response('Method not allowed', {

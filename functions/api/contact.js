@@ -83,6 +83,9 @@ export async function onRequestPost({ request, env }) {
     `<h2 style="font-family:sans-serif">New enquiry — champ-pay.com</h2>` +
     `<table style="font-family:sans-serif;font-size:14px">${rows}</table>` +
     `<hr><p style="font-family:sans-serif;white-space:pre-wrap">${escapeHtml(message)}</p>`;
+  const text =
+    `New enquiry — champ-pay.com\n\n` +
+    `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nCapacity: ${capacity}\n\n${message}`;
 
   try {
     const res = await fetch('https://api.resend.com/emails', {
@@ -96,7 +99,8 @@ export async function onRequestPost({ request, env }) {
         to: [env.CONTACT_TO],
         reply_to: email,
         subject: `ChampPay enquiry — ${company} (${capacity})`,
-        html
+        html,
+        text
       })
     });
 

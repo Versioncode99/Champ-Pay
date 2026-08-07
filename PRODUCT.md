@@ -74,7 +74,13 @@ The site is usually the second thing seen after an email — it confirms or
 destroys a first impression, and it will be opened next to competitor sites
 during diligence.
 
-## Capabilities and Constraints
+## Capabilities and Constraints — INTERNAL / DO NOT PUBLISH
+
+The facts in this section are internal decision controls. They may be used to
+prevent false public claims, but their status, dates, gaps, counterparties and
+remediation path must not be copied to the public website. Public copy explains
+the market problem, system architecture and private-contact route. Company-
+specific proof is shared only through an authorised confidential process.
 
 **Real today:** an in-market network of operator, banking and government
 relationships; a
@@ -102,20 +108,16 @@ and infrastructure.
 compliant" are reserved words. They may describe the industry or the road ahead.
 They may never describe ChampPay's present capability.
 
-### On disclaimers — changed 2026-08-04
+### Public-disclosure rule — changed 2026-08-07
 
-The previous site carried an explicit two-column *"what we hold / what we do not
-hold"* ledger on the homepage plus a regulatory negative-disclaimer in the
-footer and on the legal page. **These were removed at Videen's instruction** —
-they read as a company apologising for itself and were costing credibility with
-investors.
-
-**Removing the disclaimer did not relax the rule above.** The constraint is now
-carried by never making the positive claim in the first place, rather than by
-publishing a denial next to it. The copy speaks in terms of what is being built,
-who it runs on ("licensed partners"), and what stage it is at. If a future
-revision introduces a capability claim, the claim is the problem — do not
-re-solve it by re-adding a disclaimer.
+The public site must not disclose business status, incorporation progress,
+permissions held or not held, applications, counterparties, negotiations,
+commercial terms, customer or volume facts, financing, valuation, roadmap or
+internal diligence. Removing these facts does not authorise a positive claim.
+The copy should describe the user problem, role-level architecture and the
+questions a private conversation will settle. If a revision introduces a
+capability claim, remove or evidence the claim; never solve it by publishing an
+internal-status disclaimer beside it.
 
 ## Brand Commitments
 
@@ -153,15 +155,16 @@ a design shortcut — it is a false statement to a bank.
 
 ## Product Principles
 
-1. **Never claim capability that does not exist.** Present tense for direction,
-   market understanding and intent; road-ahead tense for licensed activity.
+1. **Never claim capability that is not evidenced.** Public language covers
+   direction, market understanding and role-level system design without
+   disclosing implementation stage.
 2. **Credibility comes from precision, not volume of claims.**
 3. **Design carries the trust that proof points normally would.** With no logos
    or numbers available, execution quality *is* the argument.
 4. **Speed and understanding over price.** Never lead with rate.
 5. **Written for someone who will check.**
-6. **Say less about the digital-asset line than you could.** Vagueness there is
-   deliberate, not a gap to be filled in later.
+6. **Say less about the digital-asset line than you could.** Transaction,
+   counterparty and commercial detail belongs under an appropriate private process.
 
 ## Accessibility & Inclusion
 

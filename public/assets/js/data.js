@@ -37,7 +37,13 @@
   function loadFx() {
     if (!document.querySelector('[data-fx]')) return;
 
-    fetch(FX, { headers: { accept: 'application/json' } })
+    var state = document.getElementById('fxLiveState');
+    if (state && state.getAttribute('data-state') !== 'live') {
+      state.setAttribute('data-state', 'connecting');
+      state.textContent = 'Connecting';
+    }
+
+    fetch(FX, { headers: { accept: 'application/json' }, cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (j) {
         if (!j || j.result !== 'success' || !j.rates) throw new Error('bad payload');
@@ -49,9 +55,19 @@
           if (rate === undefined) continue;
 
           /* Naira prints whole; the majors want decimals to mean anything. */
-          nodes[i].textContent = rate >= 100
+          var next = rate >= 100
             ? rate.toLocaleString('en-US', { maximumFractionDigits: 0 })
             : rate.toFixed(4);
+          var previous = Number(nodes[i].getAttribute('data-rate'));
+          nodes[i].textContent = next;
+          nodes[i].setAttribute('data-rate', String(rate));
+          nodes[i].classList.remove('tick-up', 'tick-down');
+          if (isFinite(previous) && previous !== rate) {
+            /* Restart the directional flash even when the same node changed on
+               the previous polling cycle. */
+            void nodes[i].offsetWidth;
+            nodes[i].classList.add(rate > previous ? 'tick-up' : 'tick-down');
+          }
         }
 
         var when = j.time_last_update_utc
@@ -59,10 +75,19 @@
           : null;
         setText('fxStamp',
           'Mid-market reference rates against the US dollar' + (when ? ', published ' + when : '') +
+          '. Checked automatically at ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) +
           '. Source: open.er-api.com. Indicative only — not a ChampPay quote or a dealable rate.');
+        if (state) {
+          state.setAttribute('data-state', 'live');
+          state.textContent = 'Auto-updating';
+        }
       })
       .catch(function () {
         setText('fxStamp', 'Reference rates are temporarily unavailable. They will resume automatically.');
+        if (state) {
+          state.setAttribute('data-state', 'delayed');
+          state.textContent = 'Retrying';
+        }
       });
   }
 
@@ -132,6 +157,17 @@
   }
 
   loadFx();
+  /* Keep the page live without a navigation or manual refresh. The public
+     source controls market-data publication frequency; this loop detects and
+     renders a changed published rate within one minute. */
+  if (document.querySelector('[data-fx]')) {
+    window.setInterval(function () {
+      if (!document.hidden) loadFx();
+    }, 60000);
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) loadFx();
+    });
+  }
   loadWorldBank();
   loadEdge();
 })();

@@ -37,15 +37,15 @@ const NAV = [
     items: [
       ['/merchants-and-operators', 'Merchants & operators', 'Businesses taking payments every day'],
       ['/banks-and-sponsors', 'Banks & sponsors', 'Licensed institutions and scheme partners'],
-      ['/investors', 'Investors', 'Capital backing the build'],
-      ['/introducers', 'Introducers', 'Origination and referral relationships'],
-      ['/partners', 'Partners', 'Who we build alongside'],
+      ['/investors', 'Investors', 'The market thesis and private diligence route'],
+      ['/introducers', 'Referral partners', 'Origination and protected referral relationships'],
+      ['/partners', 'Partners', 'Technology, distribution and specialist fit'],
     ],
   },
   {
     label: 'Company',
     items: [
-      ['/about', 'About us', 'Who we are and how we got here'],
+      ['/about', 'About us', 'Why we exist and how we think'],
       ['/newsroom', 'Newsroom', 'Announcements and market notes'],
       ['/careers', 'Careers', 'Open roles and how we hire'],
       ['/contact', 'Contact', 'Start a conversation'],
@@ -63,7 +63,7 @@ const FOOTER = [
     ['/merchants-and-operators', 'Merchants & operators'],
     ['/banks-and-sponsors', 'Banks & sponsors'],
     ['/investors', 'Investors'],
-    ['/introducers', 'Introducers'],
+    ['/introducers', 'Referral partners'],
     ['/partners', 'Partners'],
   ]],
   ['Company', [
@@ -82,6 +82,29 @@ const MARK = `<svg class="brand__mark" viewBox="0 0 100 100" fill="currentColor"
       </svg>`;
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+/* Wide editorial tables become labelled record cards on small screens. The
+   labels are authored once in <th> and copied into data-label at build time,
+   so the mobile version remains understandable without client-side scripting. */
+function labelTableCells(html) {
+  return html.replace(/<table\b[\s\S]*?<\/table>/g, (table) => {
+    const head = table.match(/<thead\b[\s\S]*?<\/thead>/);
+    if (!head) return table;
+    const labels = Array.from(head[0].matchAll(/<th\b[^>]*>([\s\S]*?)<\/th>/g), (m) =>
+      m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().replace(/"/g, '&quot;')
+    );
+    if (!labels.length) return table;
+    return table.replace(/<tbody\b[\s\S]*?<\/tbody>/, (tbody) =>
+      tbody.replace(/<tr\b[\s\S]*?<\/tr>/g, (row) => {
+        let column = 0;
+        return row.replace(/<td\b([^>]*)>/g, (cell, attrs) => {
+          const label = labels[column++] || '';
+          return /\bdata-label=/.test(attrs) ? cell : `<td${attrs} data-label="${label}">`;
+        });
+      })
+    );
+  });
+}
 
 /* ------------------------------------------------------------- the device
    The 3D phone is ~25 lines of structural markup — five faces, four rails and
@@ -192,7 +215,8 @@ function buildNav(url) {
   }).join('\n        ');
 
   return `${groups}
-        <a class="btn btn--primary nav__cta" href="/contact">Start a conversation</a>`;
+        <a class="btn btn--primary nav__cta" href="/contact">Start a conversation</a>
+        <a class="nav__email" href="mailto:contact@champ-pay.com">contact@champ-pay.com</a>`;
 }
 
 function buildFooter(url) {
@@ -222,6 +246,8 @@ async function build() {
       .slice(m[0].length)
       /* <!--device:merchant--> expands to the full 3D phone with that screen. */
       .replace(/<!--device:([a-z]+)-->/g, (_, name) => deviceMarkup(name));
+
+    body = labelTableCells(body);
 
     /* A page head with no photograph behind it is a flat slab of near-black
        green filling the first viewport — which is exactly the thing that made

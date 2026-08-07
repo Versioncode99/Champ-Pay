@@ -103,6 +103,9 @@ Read `PRODUCT.md` before writing copy. In short:
 - **Market figures are sourced.** Where the site cites market data it is
   attributed to the third party that published it and described as the market,
   not as ChampPay's own performance. Forward-looking figures are labelled indicative.
-- **Capability is described at its actual stage.** In build means in build.
+- **Internal status stays internal.** Do not publish incorporation, permission,
+  application, partner, customer, financing, roadmap or diligence status. State
+  the market problem and role-level architecture, then move evidence into an
+  authorised private process.
 - **Third parties are not named** until an agreement is executed and they have
   agreed to be named.

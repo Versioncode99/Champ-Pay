@@ -28,6 +28,12 @@ createServer(async (req, res) => {
   try {
     let path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
 
+    if (path === '/cdn-cgi/trace') {
+      res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+      res.end('colo=DEV\n');
+      return;
+    }
+
     // Dev parity for the Worker's /api/indicators route. Kept deliberately
     // simple — the deployed implementation, including its edge caching, is in
     // worker.js. Without this, data.js cannot be tested locally at all, because

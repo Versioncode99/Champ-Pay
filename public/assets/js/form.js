@@ -13,6 +13,16 @@
   var btn = document.getElementById('submitBtn');
   var label = document.getElementById('submitLabel');
 
+  /* Deep links from Careers pre-select the correct route without duplicating
+     the form or creating a second delivery path. */
+  var requested = new URLSearchParams(window.location.search).get('for');
+  if (requested === 'candidate') {
+    var capacity = form.querySelector('[name="capacity"]');
+    var message = form.querySelector('[name="message"]');
+    if (capacity) capacity.value = 'A candidate';
+    if (message) message.placeholder = 'Link to your CV or portfolio, name the role or discipline, and tell us what you are unusually good at.';
+  }
+
   var RULES = {
     name: function (v) { return v.trim().length >= 2 || 'Enter your name'; },
     email: function (v) {
@@ -111,7 +121,7 @@
         }
       })
       .catch(function () {
-        showStatus('err', 'That did not send. Please try again shortly, or reach us through the address on your existing thread.');
+        showStatus('err', 'That did not send. Please try again shortly, or email contact@champ-pay.com.');
         btn.disabled = false;
         btn.style.opacity = '';
         label.textContent = 'Send message';
