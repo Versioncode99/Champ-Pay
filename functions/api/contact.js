@@ -105,6 +105,14 @@ export async function onRequestPost({ request, env }) {
     });
 
     if (!res.ok) {
+      // Keep the visitor-facing response generic, but leave the provider's
+      // status and request ID in Worker logs so delivery faults are diagnosable
+      // without logging enquiry content or secrets.
+      console.error('Resend contact delivery failed', {
+        status: res.status,
+        requestId: res.headers.get('x-resend-request-id') || res.headers.get('cf-ray') || 'unavailable',
+        provider: await res.text()
+      });
       return json({ error: 'The message could not be delivered.' }, 502);
     }
     return json({ ok: true }, 200);
